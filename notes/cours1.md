@@ -37,9 +37,7 @@
 - Aujourd'hui, le légal, marketing, politique etc. se mêle des modèles et des objectfis (penser Chat-GPT)
 - **Considérer prendre un livre dans le top 3 des ouvrages de référence**
   - Le troisième est recommander par Kévin
-- On ne voit pas les algorithmes d'apprentissage par renforcement dans ce cours 
- 
-## Mise en contexte
+- On ne voit pas les algorithmes d'apprentissage par renforcement dans ce cours
 - Professeur du LIARA
 
 ### LIARA
@@ -52,9 +50,34 @@
   - Radars UWB : Radars à bande ultra-large
     - Veille technologie qui vient d'être minituarisé
   - Ville intelligente : Détection des personnes vulnérables dans la ville à partir de noeuds de capteurs
+ 
+## Mise en contexte sur l'apprentissage automatique
+- Apprentissage automatique est une sous-discipline de l'intelligence artificielle
+  - Une très grosse sous-discipline
+- Vise la généralisation, prêt à faire des sacrifices sur la performance
+- Souhaites faire des agents apprenants afin de pallier différentes difficultés
+- L'IA se redéfinis continuellement
+  - Ça va avec les _vagues_
+    - D'après Kévin, la vague courrante est là pour rester
 
 ## Types d'apprentissage machine
 
+### En fonction du Feedback
+- Supervisé : Fonction qui associe les entrées aux sorties
+  - Ressemble à un program informatique UQAC sauf qu'on n'a pas spécifié la méthode (juste entrés et sorties)
+- Semi-supervisé : Les données d'apprentissage ont parfois une étiquette, parfois non
+  - Apprentissage actif : Par avec un enssemble de données de supervisé et revise le modèle continuellement jusqu'a avoir des un résultat acceptable
+  - Apprentissage par groupe : On a une idée de ce qui se trouve dans les données, on a l'étiquette mais manque des informations
+    - Plus difficile à expliquer comme approche, se diversifie beaucoup
+- Non supervisé : Le modèle extrait des patterns dans les entrées sans direction spécifique
+  - Résultat dépendent fortement de l'interprétation de l'humain
+- Renforcement : L'agent apprend en fonction de récompenses ou punitions
+  - C'est à l'agent de décider quoi en faire!
+  - Demande beaucoup d'essai et erreur
+  - Souvent vu dans l'industrie du jeux vidéo
+ 
 ## Ensembles de données
+- Remis au prochain cours
 
 ## Processus global du ML
+- Remis au prochain cours
