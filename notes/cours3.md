@@ -104,4 +104,6 @@
 - Les logs permettent d'éviter un _underflow_ (soupassement arithmétique)
 - On transforme le produit en somme (plus facile à dériver)
 - On peut optimiser de la même façon qu'avec Adaline en dérivant pour trouver le gradient
-  - Attention : Il faut utiliser gradient ascent avec la fonction (ou inverser la fonction, voir slide 15 leçon #3)   
+  - Attention : Il faut utiliser gradient ascent avec la fonction (ou inverser la fonction, voir slide 15 leçon #3)
+
+## 
