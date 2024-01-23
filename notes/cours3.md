@@ -52,4 +52,6 @@
 - Dans l'exemple, à 10 epochs on voit qu'on a congergé
 
 ## Optimiseurs
-_Skipped_
+- _Skipped_
+- Pas encore d'optimiseurs idéal trouver
+- Librairies (liens) dans les assétates
