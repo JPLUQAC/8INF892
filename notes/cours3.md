@@ -49,3 +49,7 @@
 - Converge plus rapidement en général
 - L'erreur contient plus de bruit
 - Learning rate est souvent adaptatif avec SGD
+- Dans l'exemple, à 10 epochs on voit qu'on a congergé
+
+## Optimiseurs
+_Skipped_
