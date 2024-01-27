@@ -141,4 +141,24 @@
 - Si la fonction est séparable linéairement, le Perceptron va s'arrêter seul car il ne feras plus d'erreur
 - Passe instance par instance puis lorsque terminer on recommence une passe instance par instance jusqu'à ce que la condition d'arrêt soit atteninte
   - Un _epoch_ c'est une passe sur le dataset en entier
- 
+
+### One-Vs-All
+- Technique pour étendre le Perceptron aux problèmes multi-classes
+- Stratégie implémenter dans scikit-learn
+- L'idée est que pour chaque classe, on va transformer ça en problème de classification binaire
+  - Tout instance qui n'est pas la classe actuelle est considérée comme une classe négative
+- Une neurone par classe
+  - Nombre de modèles est égale aux nombres de classes
+  - Passes un nouvel exemple dans tous les classeurs de façon à trouver celui qui se déclenche
+- En général, on préfère avoir une sortie en termes de niveau de confiance où l'on cherche le max
+  - Difficile avec des données mal balancées
+  - Difficile de s'assurer que la gamme de niveaux de confiance ne varie pas trop d'une classeur à l'autre
+
+### One-Vs-One
+- Stratégie pour étendre le Perceptron aux problèmes multi-classes
+- Stratégie populaire dans scikit-learn
+- Un classeur par pair de classe
+- Vote sur la totalité des classeurs
+- Bien expliquer par Scikit-learn : _https://scikit-learn.org/stable/modules/multiclass.html_
+
+## Adaptive Linear Neurson : Adaline
