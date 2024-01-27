@@ -142,8 +142,17 @@
 - Passe instance par instance puis lorsque terminer on recommence une passe instance par instance jusqu'à ce que la condition d'arrêt soit atteninte
   - Un _epoch_ c'est une passe sur le dataset en entier
 
-### One-Vs-All
-- Technique pour étendre le Perceptron aux problèmes multi-classes
+## Adaptive Linear Neuron : Adaline
+- MàJ des poids selon une fonction d'activation linéaire
+  - Simplement la fonction d'identité de l'entrée nette
+- Les sorties sont des valeurs continues plutôt que binaire
+- Très similaire au Perceptron
+- Apprendre les pods en tant que _Sum of Square Errors_ (SSE) entre les sorties et les vraies classes
+  - Fonction de coûts à minimiser
+- Régression linéaire
+
+## One-Vs-All
+- Technique pour étendre le Perceptron (ou autre modèle) aux problèmes multi-classes
 - Stratégie implémenter dans scikit-learn
 - L'idée est que pour chaque classe, on va transformer ça en problème de classification binaire
   - Tout instance qui n'est pas la classe actuelle est considérée comme une classe négative
@@ -153,12 +162,27 @@
 - En général, on préfère avoir une sortie en termes de niveau de confiance où l'on cherche le max
   - Difficile avec des données mal balancées
   - Difficile de s'assurer que la gamme de niveaux de confiance ne varie pas trop d'une classeur à l'autre
+- Difficulté est qu'on a toujours beaucoup plus de données négative étant donner que c'est tout contre un
 
-### One-Vs-One
-- Stratégie pour étendre le Perceptron aux problèmes multi-classes
+## One-Vs-One
+- Stratégie pour étendre le Perceptron (ou autre modèle) aux problèmes multi-classes
 - Stratégie populaire dans scikit-learn
 - Un classeur par pair de classe
 - Vote sur la totalité des classeurs
 - Bien expliquer par Scikit-learn : _https://scikit-learn.org/stable/modules/multiclass.html_
+- Ne souffre pas du débalancement des données
 
-## Adaptive Linear Neurson : Adaline
+## Fonction de coûts
+- Fonction pour estimer notre erreur
+- Clé en ML : Optimisation d'une fonctione objective
+  - Souvent _cost_ ou _loss_ function
+- Optimiser les paramêtres pour minimiser la fonction de coûts
+
+### Algorithme du Gradient
+- Similaire au _Hill Climbing_ (exploration locale)
+- Regarde la pente des états voisins
+  - Bouger dans la direction la plus abrupte
+  - Trouver par la dérivée partielle (diapo 16)
+- Peut être en version monter ou décente
+- Bénéficie du _feature scaling_
+  - Calcul est plus rapide 
