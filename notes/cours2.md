@@ -1,6 +1,10 @@
 # Cours 2 - 16 Janvier 2024
+
+# Introduction
 - Suite au dernier cours
 - **Caractéristiques = features**
+- Ce n'est pas souvent discuté mais habituellement on va ré-entraîner un modèle sur la totalité des données avant de le mettre en production
+  - Si nous avons bien faite notre méthodologie, il devrait avoir la même performance dans le pire des cas et une meilleure performance dans le meilleur des cas 
 
 ## Types d'apprentissage
 - Divisé en fontion du _feedback_
@@ -101,4 +105,40 @@
 4. Prédiction
 
 # Neurone Artificielle
+- Neurone fondée sur la neurone biologique (1943)
+- Transmeettre des signeux électriques et chimiques
+  - Entrées et sorties 
 
+## Perceptron
+- Rosenblatt 1957
+- Modèle de base
+- Pas très utilise aujourd'hui mais très pratique pour apprendre
+- Apprendre les poids optimaux à multiplier avec les entrées afin de déterminer si le neurone s'active ou non
+  - Utilise pour la classfication binaire (ML supervisé) : Deux classes
+- Z est l'entrée nette composé d'une combinaison linéaire d'entrées x et de poids w (somme pondérée)
+- La classification se définie par une fonction d'activation avec un threshold
+- Simple équation linéaire
+- Nombre de caractéristiques = nombre de paramètres
+- Fonction d'activation s'appel _Heaviside_
+  - Fait partie de ce qu'on appel la fonction _stepwise_ aujourd'hui
+- On essaie d'apprendre notre seuil d'activation
+  - On l'ajoute en paramètre
+  - X zéro est toujours égale à 1 pour ajouter notre seuil d'activation comme paramètre
+
+### Fonctionnement de l'apprentissage
+1. Initialisation des poids à 0 (ou petit nombre aléatoire)
+2. Pour chaque exemple d'entrainement X à la i
+  1. Calculer la sortie estimée y à la i
+  2. Mettre à jour les poids
+- n est le fameux _learning rate_ entre 0.0 et 1.0
+- Voir les slides 7 et 8
+- Le poids ne change pas si la prédiction est correct
+- **Pas d'erreur, pas d'apprentissage**
+
+### Bilan
+- Si ce n'est pas séparable linéairement, Perceptron MàJ à l'infini
+  - Nombre max des passes à travers l'ensembles (epochs)
+- Si la fonction est séparable linéairement, le Perceptron va s'arrêter seul car il ne feras plus d'erreur
+- Passe instance par instance puis lorsque terminer on recommence une passe instance par instance jusqu'à ce que la condition d'arrêt soit atteninte
+  - Un _epoch_ c'est une passe sur le dataset en entier
+ 
