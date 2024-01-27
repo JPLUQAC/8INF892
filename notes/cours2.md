@@ -185,4 +185,18 @@
   - Trouver par la dérivée partielle (diapo 16)
 - Peut être en version monter ou décente
 - Bénéficie du _feature scaling_
-  - Calcul est plus rapide 
+  - Calcul est plus rapide
+- Prend beaucoup de mémoire
+ 
+## Hyperparamètres
+- Learning rate
+  - Learning rate trop haut peut empêcher de converger
+  - Learning rate trop faible peut faire tourner l'algorithme longtemps
+- Nombre d'epochs
+- Il n'y a pas de valeurs parfaites
+- Des méthodes existent pour automatiquement calibrer les hyperparamètres
+
+## Stochastic Gradient Descent
+- La version de l'agorithme de gradient le plus utilisés
+- On y va de manière itérative
+- Le faire sur des sous-ensembles de données (batch)
