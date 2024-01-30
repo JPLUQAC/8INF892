@@ -54,4 +54,6 @@
   - Les images sont les chiffres 0 à 9 écrit à la main
   - Très utile d'avoir ce dataset à porté de main
   - Nos modèles devrait avoir 94-95% de précision
-- 
+- Long à rouler
+- Intéressant de bien le rouler nous mêmes (avec modification) pour comprendre
+- Il y a une version Tensorflow sur moodle (pas démontré)
