@@ -22,6 +22,7 @@
 - S'agit d'un ensemble d'algorithmes développés pour l'entraînement de réseau de neurons artificiels à plusieurs couches
 - En 1986 que l'intérêt des NN reprend avec la découverte de l'algorithme **backpropagation** qui permet l'entraînement de réseaux multicouches plus facilement
 - **State-of-the-art** pour les problèmes exploitant des données complexe (images, voix, textes)
+- L2 pour réduire le surapprentissage
 
 ## Multiples couches
 - Nos NN sont cimple couche, mêmne s'il y a une couche d'entrées et une de sorties à cause du lien unique qui les lie
@@ -57,3 +58,7 @@
 - Long à rouler
 - Intéressant de bien le rouler nous mêmes (avec modification) pour comprendre
 - Il y a une version Tensorflow sur moodle (pas démontré)
+- Va faire partie du deuxième travail d'autoformation
+
+## Fonction de coûts
+- Voir les slides, spécifique à l'exemple
