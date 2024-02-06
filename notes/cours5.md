@@ -107,3 +107,34 @@
 - En somme, le log base 2 s'interprète comme étant le minimum de bits nécessaire à l'encodage de l'information
 - Va plus loin que l'en tropie en calculant comment compresser de façon à s'approcher de l'encodage optimal
 - KLL n'est pas symétrique et ne peut donc pas servir de distance
+- On va revoir plus tard
+
+### Similarité cosinus
+- Permet de connaître la similarité cosinus entre -1 et 1 pour deux instances de vecteurs
+  - 1 = très similaire
+  - 0 = ortogonaux
+  - -1 = très différents
+- En réalité ça fait peu de sens mais ça nous permet d'introduire son utilié en ML
+
+# Projets
+- De notre choix
+- Peut être plus scientifique ou plus appliqué
+- Doit être en mesure d'expliquer nos décisions
+- Perd pas de points si ça ne fonctionne pas
+- Langauge de notre choix
+  - Valider avec prof si on utilise un language obscure
+- Porter une attention particulière aux données
+  - Quantité
+  - Leurs provenance
+  - Qualité
+  - etc. 
+
+## Objectifs
+- Inégrer différentes notions apprises en cours à l'intérieur d'un projet plus large
+- Développer un logiciel de taille moyenne en suivant une méthodologie rigoureuse
+- Comprendre la relation entgre la théorie vue en classe et l'implantation réelle
+- Comprendre les difficultées liées à la modélisation des données
+- Devenir apte à justifier les décision de concept en IA
+- Approfondir ses connaissances de mani`res autodidacte
+- Acquérir de l'expertise dans le développement d'intelligence artificielle
+
