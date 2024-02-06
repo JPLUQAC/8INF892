@@ -209,12 +209,27 @@
 - Principaux algorithmes: RandomForest, Extremely Randomized Trees, Wagging
 
 ### Stacking
+- Empile des classeurs
+  - La premier couche entraîne la deuxième et ainsi de suite
+- Chaque _stack_ peut être différent
+  - Premier peut être _logistic regression_, deuxième est _Adaline_, etc.
+- C'est un algorithme qui est très lents alors pas vraiment utilisé
 
 ### Boosting
+- Exemple:
+  - Maximisation de la fonction de coûts
+  - On ajuste les poids, on entraîne un second calsseur
+  - On ajuste les poids, on entraîne un troisième classeur
+  - On combine les classeurs par vote 
 
 ### Adaboost
+- Voir la vidéo du cours
 
 #### Variantes
-- Real Adaboost
-- Gental Adaboost
+- Real Adaboost : Calcule ses hypothèses faibles en optimisant directement les limites uspérieures des erreurs d'entraînement
+  - Généralisation plus rapide d'Adaboost, les sorties sont des probabilités 
+- Gental Adaboost : Limite le coefficient _petit alpha_ pour éviter les troop grandes valeurs
 - SoftBoost, Interactive Boosting, ReweightBoost, Soft-LPBoost, RobustBoost
+  - La plupart se concentrent sur la généralisation d'Adaboost
+ 
+### Gradient boosting 
