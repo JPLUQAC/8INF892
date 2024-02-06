@@ -1,13 +1,6 @@
 # Cours 5 - 6 Février 2024
 - Dernier 25-30 minutes du cour conservé pour discuter du projet
 
-# Entrapînement
-
-## Fonction de coûts
-- Vient mesuré l'erreur dans le réseau
-- On utilise sa dérivé pour entraîner le modèle (modifier les poids)
-- Voir le code
-
 ## Backpropagation (Propagation arrière)
 - Algorithme, façon de calculer les gradients
 - Algorithme efficace (d'un point de vue algorithmique) qui permet de calculer les dérivées d'une fonction de coûts complexe
@@ -75,3 +68,42 @@
   - Chaque classe vaut entre 0 et 1
 - Ne fonctionne pas si vos instances peuvent appartenir à la fois à plusieurs classes
   - On doit retourner vers Sigmoide (la fonction logistique)     
+
+## Fonction de coûts
+- Vient mesuré l'erreur dans le réseau
+  - Somme des erruers
+  - Chaque couche doit avoir une fonction de coûts et chaque fonction de coûts a son propre minimum
+  - Fonction mathématique complexe à optimiser
+- Concrètement, c'est la dérivée dû calcul de l'erreur qui permet de mette à jour chacun des pods 
+
+### Fonctions simples
+- Mean Squared Error (MSE)
+- Mean Absolute Error (MAIE
+
+### Cross-Entropy
+- NLLL et Cross-Entropy sont des fonctions similaires qui servent pour la clasfication binaire, Keras offre justement juste Cross-Entropy
+- Tensorflow offre pas mal de variations de la cross-entropy
+  - BinaryCrossentropy : uniquement utilisable pour les problèmes binaires avec étiquettes
+  - BinaryFocalCrossentropy : ajoute une fonction pour focaliser sur les exemples difficiles
+  - CategoricalCrossentropy : celle qu'on vient de voir avant
+  - SparseCategoricalCrossentropy
+    - Étiquettes sous la forme d'entiers, non de one-hot
+    - La sortie est quand même un vecteur
+    - Surtout intéressante pour éviter l'encodage lors de problème avec énormément de classes possibles (NLP)
+
+### Hinge Loss
+- Lorsque la distance avec le seuil est moins que 1, la perte vaut 0
+- Si le point est sur le seuil, la perte est 1
+- Si la distance est négative, la perte augmente linéairement
+- Les instances bien classées ont une perte minimal
+- Souvent utilisée pour entraîner les SVM
+- Elle tente de favoriser les exemples qui sont loin du seuil
+- On peut l'utiliser dans TF en autant que nos classes soient entre -1 et 1... supporte aussi 0 à 1 mais les valeurs seront reconverties
+
+### Kullback-Leibler
+- Divergence de KL est très populaire en deep-learning, en particulier pour les modèles génératifs que nous verrons plus tard
+- En probabilitées, elle permet de mesurer la quantité d'informations perdues en simplifiant une distributioon par une autre visant à l'approximer
+- On utilie encore la notion d'entropie
+- En somme, le log base 2 s'interprète comme étant le minimum de bits nécessaire à l'encodage de l'information
+- Va plus loin que l'en tropie en calculant comment compresser de façon à s'approcher de l'encodage optimal
+- KLL n'est pas symétrique et ne peut donc pas servir de distance
