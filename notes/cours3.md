@@ -220,10 +220,14 @@
   - Maximisation de la fonction de coûts
   - On ajuste les poids, on entraîne un second calsseur
   - On ajuste les poids, on entraîne un troisième classeur
-  - On combine les classeurs par vote 
+  - On combine les classeurs par vote
+- Fonctionne pas bien avec des données bruiantes car le modèle va se concentrer juste sur eux avec le temps
 
 ### Adaboost
-- Voir la vidéo du cours
+- Première version du boosting
+- Voir la slide 42 du cours pour voir comment il fonctionne
+- Vraiment le concept de base de boosting mais implémenté
+- Permet de mettre un poids au vote pour aider
 
 #### Variantes
 - Real Adaboost : Calcule ses hypothèses faibles en optimisant directement les limites uspérieures des erreurs d'entraînement
