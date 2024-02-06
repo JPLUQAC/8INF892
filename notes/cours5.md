@@ -50,3 +50,28 @@
 - Les ReLU ne corrigent pas l'inverse du _vanishing gradient_
 - Ainsi, ils souffrent du _exploding gradient_
   - Moins critique   
+
+#### Scaled ELU
+- Alpha et gamme sont fixées
+  - Ils sont déterminés à partir des entrées
+  - Voir l'article original qui a plus de 93 pages d'annexes pour expliquer (haha)
+- Utilisés avec une initialisation spécifique des poids, nous obtenons des SNN - Self Normalizing Neurons
+- Il est démontré qu'on ne peut pas avoir de _vanishing_ ou _exploding_ gradient
+- Les réseaux convergent plus vite
+- On doit utiliser _lecun normal_ dans Keras
+- Nous verrons plus tard avec le dropout
+
+### Swish
+- Dévloppé par Google Brain et basé sur PFLU
+- Non monotone, mais visait à détrôner ReLU
+- Rapidement beaucoup de **dead ReLU**, nuisible dans les réseaux très prodonfs
+- Bornée en négatif, à utiliser avec _batch normalizatrion_
+
+### Softmax
+- Softmax se base sur les principes de la fonction d'activation logistique
+  - On produit un résultat qui est une probabilité d'appartenance à une classe entre 0 et 1
+- Softmax étend cette idée aux problèmes multiclasses
+  - La somme des probabilités devient égale à 1
+  - Chaque classe vaut entre 0 et 1
+- Ne fonctionne pas si vos instances peuvent appartenir à la fois à plusieurs classes
+  - On doit retourner vers Sigmoide (la fonction logistique)     
