@@ -129,6 +129,10 @@
   - Qualité
   - etc.
 - Pas de présentation finale
+- Deux sprints (avec rapports)
+  - Sprint 1 est jeudi le 31 mars
+  - Sprint 2 est le jeudi 14 avril
+- Remise est le 21 avril
 
 ## Objectifs
 - Inégrer différentes notions apprises en cours à l'intérieur d'un projet plus large
@@ -138,9 +142,3 @@
 - Devenir apte à justifier les décision de concept en IA
 - Approfondir ses connaissances de mani`res autodidacte
 - Acquérir de l'expertise dans le développement d'intelligence artificielle
-
-## Pointage
-- 20% pour les rapports de sprints
-  - Sprint 1 est jeudi le 31 mars
-  - Sprint 2 est le jeudi 14 avril
-- 30% pour le projet 
