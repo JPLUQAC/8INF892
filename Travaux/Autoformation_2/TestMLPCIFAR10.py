@@ -1,4 +1,4 @@
-import MLP
+import MLPRandomHidden
 import numpy as np
 import matplotlib.pyplot as plt
 import torchvision
@@ -35,7 +35,7 @@ X_test = np.array(X_test)
 y_test = np.array(y_test)
 
 
-nn = MLP.NeuralNetMLP(n_output=10,
+nn = MLPRandomHidden.NeuralNetMLP(n_output=10,
                   n_features=X_train.shape[1],
                   n_hidden=50,
                   l2=0.1,

@@ -1,4 +1,4 @@
-import MLP
+import MLPRandomHidden
 import os
 import struct
 import numpy as np
@@ -18,13 +18,10 @@ def load_mnist(path, kind='train'):
 
     return images, labels
 
-
 X_train, y_train = load_mnist('Data/', kind='train')
 X_test, y_test = load_mnist('Data/', kind='t10k')
 
-
-
-nn = MLP.NeuralNetMLP(n_output=10,
+nn = MLPRandomHidden.NeuralNetMLP(n_output=10,
                   n_features=X_train.shape[1],
                   n_hidden=50,
                   l2=0.1,
@@ -44,7 +41,6 @@ plt.ylim([0, 2000])
 plt.ylabel('Cost')
 plt.xlabel('Epochs * 50')
 plt.tight_layout()
-# plt.savefig('./figures/cost.png', dpi=300)
 plt.show()
 
 batches = np.array_split(range(len(nn.cost_)), 1000)
@@ -56,9 +52,7 @@ plt.ylim([0, 2000])
 plt.ylabel('Cost')
 plt.xlabel('Epochs')
 plt.tight_layout()
-#plt.savefig('./figures/cost2.png', dpi=300)
 plt.show()
-
 
 y_train_pred = nn.predict(X_train)
 acc = np.sum(y_train == y_train_pred, axis=0) / X_train.shape[0]
@@ -67,7 +61,6 @@ print('\nTraining accuracy: %.2f%%' % (acc * 100))
 y_test_pred = nn.predict(X_test)
 acc = np.sum(y_test == y_test_pred, axis=0) / X_test.shape[0]
 print('Test accuracy: %.2f%%' % (acc * 100))
-
 
 miscl_img = X_test[y_test != y_test_pred][:25]
 correct_lab = y_test[y_test != y_test_pred][:25]
@@ -83,6 +76,4 @@ for i in range(25):
 ax[0].set_xticks([])
 ax[0].set_yticks([])
 plt.tight_layout()
-# plt.savefig('./figures/mnist_miscl.png', dpi=300)
 plt.show()
-

@@ -1,12 +1,7 @@
 import numpy as np
 from scipy.special import expit
 import sys
-
-
-# Implémentation du MLP
-# Couche d'entrées, 1 couche cachée et couche de sorties
-#
-# Code similaire à Adaline
+import random
 
 class NeuralNetMLP(object):
     """ Feedforward neural network / Multi-layer perceptron classifier.
@@ -53,7 +48,6 @@ class NeuralNetMLP(object):
         self.n_output = n_output
         self.n_features = n_features
         self.n_hidden = n_hidden
-        self.w1, self.w2 = self._initialize_weights()
         self.l1 = l1
         self.l2 = l2
         self.epochs = epochs
@@ -62,6 +56,17 @@ class NeuralNetMLP(object):
         self.decrease_const = decrease_const
         self.shuffle = shuffle
         self.minibatches = minibatches
+
+        self.n_hidden_layers = random.randrange(1,10) # Nombre aleatoire entre 1 et 9
+        self.w1s = []
+        self.w2s = []
+
+        for i in range(self.n_hidden_layers):
+            w1, w2 = self._initialize_weights()
+            self.w1s.append(w1)
+            self.w2s.append(w2)
+
+        print("Number of hidden layers: " + str(self.n_hidden_layers))
 
     def _encode_labels(self, y, k):
         """Encode labels into one-hot representation
@@ -189,9 +194,6 @@ class NeuralNetMLP(object):
         cost = cost + L1_term + L2_term
         return cost
 
-    #
-    # Nous verrons plus tard
-    #
     def _get_gradient(self, a1, a2, a3, z2, y_enc, w1, w2):
         """ Compute gradient step using backpropagation.
 
@@ -254,14 +256,13 @@ class NeuralNetMLP(object):
             raise AttributeError('X must be a [n_samples, n_features] array.\n'
                                  'Use X[:,None] for 1-feature classification,'
                                  '\nor X[[i]] for 1-sample classification')
-
-        a1, z2, a2, z3, a3 = self._feedforward(X, self.w1, self.w2)
-        y_pred = np.argmax(z3, axis=0)
+        z3T = 0
+        for i in range(self.n_hidden_layers):
+            a1, z2, a2, z3, a3 = self._feedforward(X, self.w1s[i], self.w2s[i])
+            z3T = z3T+z3
+        y_pred = np.argmax(z3T, axis=0)
         return y_pred
 
-    #
-    # Fonction d'entraînement
-    #
     def fit(self, X, y, print_progress=False):
         """ Learn weights from training data.
 
@@ -284,11 +285,13 @@ class NeuralNetMLP(object):
         X_data, y_data = X.copy(), y.copy()
         y_enc = self._encode_labels(y, self.n_output)  # Vecteur one-hot
 
-        delta_w1_prev = np.zeros(self.w1.shape)
-        delta_w2_prev = np.zeros(self.w2.shape)
+        delta_w1_prevs = []
+        delta_w2_prevs = []
+        for i in range(self.n_hidden_layers):
+            delta_w1_prevs.append(np.zeros(self.w1s[i].shape))
+            delta_w2_prevs.append(np.zeros(self.w2s[i].shape))
 
         for i in range(self.epochs):  # Nombre de passage sur le dataset
-
             # adaptive learning rate
             self.eta /= (1 + self.decrease_const * i)  # Permet de réduire le nombre d'epochs nécessaire à la convergence en limitant les risques de "pas" trop grand!
 
@@ -301,32 +304,24 @@ class NeuralNetMLP(object):
                 X_data, y_enc = X_data[idx], y_enc[:, idx]
 
             mini = np.array_split(range(y_data.shape[0]),
-                                  self.minibatches)  # Si le mode minibatch est activé, le dataset en entrée est divisé en batch pour le calcul des gradients
+                                self.minibatches)  # Si le mode minibatch est activé, le dataset en entrée est divisé en batch pour le calcul des gradients
             for idx in mini:
-                # feedforward
-                a1, z2, a2, z3, a3 = self._feedforward(X_data[idx], self.w1,
-                                                       self.w2)  # Ce que nous avons vu jusqu'à présent
-                cost = self._get_cost(y_enc=y_enc[:, idx], output=a3, w1=self.w1, w2=self.w2)
-                self.cost_.append(cost)
+                for j in range(self.n_hidden_layers) : # Nombre de couches
+                    # feedforward
+                    a1, z2, a2, z3, a3 = self._feedforward(X_data[idx], self.w1s[j],
+                                                        self.w2s[j])  # Ce que nous avons vu jusqu'à présent
+                    cost = self._get_cost(y_enc=y_enc[:, idx], output=a3, w1=self.w1s[j], w2=self.w2s[j])
+                    self.cost_.append(cost)
 
-                # compute gradient via backpropagation
-                #
-                # Nous verrons plus en détails
-                grad1, grad2 = self._get_gradient(a1=a1, a2=a2, a3=a3, z2=z2, y_enc=y_enc[:, idx], w1=self.w1,
-                                                  w2=self.w2)
+                    # compute gradient via backpropagation
+                    #
+                    # Nous verrons plus en détails
+                    grad1, grad2 = self._get_gradient(a1=a1, a2=a2, a3=a3, z2=z2, y_enc=y_enc[:, idx], w1=self.w1s[j],
+                                                    w2=self.w2s[j])
 
-                delta_w1, delta_w2 = self.eta * grad1, self.eta * grad2
-                self.w1 -= (delta_w1 + (self.alpha * delta_w1_prev))
-                self.w2 -= (delta_w2 + (self.alpha * delta_w2_prev))
-                delta_w1_prev, delta_w2_prev = delta_w1, delta_w2
+                    delta_w1, delta_w2 = self.eta * grad1, self.eta * grad2
+                    self.w1s[j] -= (delta_w1 + (self.alpha * delta_w1_prevs[j]))
+                    self.w2s[j] -= (delta_w2 + (self.alpha * delta_w2_prevs[j]))
+                    delta_w1_prevs[j], delta_w2_prevs[j] = delta_w1, delta_w2
 
         return self
-
-# Retour sur le powerpoint
-
-
-
-
-
-
-
