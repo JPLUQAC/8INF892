@@ -73,7 +73,12 @@
   - R-CNN sont les modèles ayant le plus de succès
   - Peuvent être construit directement sur VGG, ResNet, etc.
   - Directement en FCN (voir UNET)
-  -  
+- Un défis est que la sortie peut être plus petite que l,entrée
+  - Cause: pooling avec stride et/ou convolution sans padding
+- Stratégie possibles:
+  - Éviter les couches de pooling
+  - Utiliser un pooling afin d'estimer les pixels manquants
+  - Améliorer itérativement la prédiction des pixels par récurrence  
 
 ### Types de données
 - Canal unique:
