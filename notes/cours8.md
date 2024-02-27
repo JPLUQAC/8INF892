@@ -4,6 +4,8 @@
   - Quelques lignes mais doit bien y penser
 - **Trouver un sujet de projet avant jeudi le 29**
 - Travail d'autoformation 1 et 2 bien réussi en générale
+- Pas de cours au retour de la mi-session
+  - Période pour travailler sur le projet de session 
 
 # Difficultés des RNN
 - Dépendance à long terme
@@ -55,4 +57,5 @@
   - Plutôt que des valeurs discrètes, nous aurons une distribution de probabilité pour chaque attribut latent
 - Cela fait en sorte qu'il peut générer un nombre infinie de versions
 - Concept de encodeur et décodeur
--  
+- Apprend tranquillement à générer des choses similaires mais différents à ce qu'il a vu
+- Moyenne et variance pour la distributions des variables latentes
