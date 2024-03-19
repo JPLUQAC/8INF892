@@ -81,3 +81,22 @@
 - On impose une condition aux entrées du générateur et du discriminateur
   - Se présente sous la forme d'une version vectorielle unique du chiffre
 - Similaire au DCGAN
+
+## D'autres modèles en BREF
+
+### INFOGAN
+- Information maximizing generative adversarial network
+
+### STACKGAN
+- Extension du GAN pour générer des images à partir de textes
+- Pile hiérarchique de modèles CGAN
+
+### Progressive growing GAN
+- Transition d'une résolution à une autre est traitée comme un bloc résiduel
+
+### StyleGAN
+- Début en 2018
+- Plusieurs versions
+- Permet de définir le niveau de bruit
+- Entraînement se fait taille par taille
+- StyleGAN 3 en 2021
