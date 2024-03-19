@@ -18,7 +18,6 @@
   - Connecte la sortie à une couche dense complètement connectée
   - Activation linéaire
 
-
 # GAN
 - Generative Adversarial Networks
 
@@ -32,6 +31,8 @@
 ## Générations d'images
 - Qualité de génération de visages pas possible avec des VAE **simple**
 - Modèle de Nvidia en 2017 (Progressive GAN) apporte du photo réaliste
+
+## Principes de base
 - GAN réussissent ces exploits en traînant deux réseaux en compétition coopérative
   - Générateur: Vise à apprendre à générer des fausses données pour tromper le discriminateur
   - Discriminateur: Tente d'apprendre à détecter les fausses données
@@ -40,4 +41,29 @@
   - Besoin d'une compétition saine entre les deux pour que les deux apprenents
 - Les GAN sont très difficiles à entraîner
 - Les GANS souffrent aussi du problème d'effondrement
-  - Générateur produit des sorties presque similaires pour différents encodages latents    
+  - Générateur produit des sorties presque similaires pour différents encodages latents
+- Bruit gaussien
+
+### Discriminateur
+- Deux minibatch de données sont fournies au discriminateur durant l'entraînement
+- Pour minimiser la fonction de perte, les paramètres du discriminateur seront mis à jour
+
+### Générateur
+- Pour son entraîner, le GAN considère le total des pertes du discriminateur et du générateur comme un jeu à somme nulle
+- La fonction de perte est donc le négatif de celle du discriminateur
+
+## Forces
+- GAN peut utiliser la backpropagation
+- Le générateur ne prend pas les données d'entraînement. Il ne prend que le bruit.
+- Auto apprentissage (pas d'étiquette)
+
+## Faiblesses
+- Critères d'arrêt peu clairs : Pas de manière objective de dire que le résultat est optimal
+- Peut rester emprisonnés dans des optima locaux : Trouve une valeur qui trompe toujours discriminateur dans un cas spécifique alors arrête d'apprendre.
+- Presque impossible de retrovuer le bruit qui a générer la donnée
+  - XAI...
+- Compraison des GAN très subjectif
+- Difficle à entraîner
+
+ ## DCGAN
+ - 
