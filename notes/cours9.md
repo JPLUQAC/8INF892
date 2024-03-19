@@ -66,4 +66,18 @@
 - Difficle à entraîner
 
  ## DCGAN
- - 
+ - Deep Convolutional GAN
+ - Pas de pooling
+ - Le modèle du discriminateur est pratiquement juste l'inverse du générateur
+ - LeakyReLu utilisé dans le discriminateur pour éviter d'avoir des zéros
+   - ReLu risque vriament de causé des problèmes
+ - S'entraîne bien sur un ordinateur de maison
+ - Fausses images générées aléatoirement
+   - Aucun contrôle sur les chiffres spécifiques produits
+ - Voir code
+
+## Conditional GAN
+- CGAN
+- On impose une condition aux entrées du générateur et du discriminateur
+  - Se présente sous la forme d'une version vectorielle unique du chiffre
+- Similaire au DCGAN
