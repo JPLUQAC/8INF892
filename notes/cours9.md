@@ -20,4 +20,24 @@
 
 
 # GAN
-- 
+- Generative Adversarial Networks
+
+## Introduction
+- Type de réseaux de neurones
+- Inventés en 2014 par Goodfellow
+- Devenus très populaire mais ils sont déjà pu _state of the art_
+- Ce sont des réseaux génératifs
+  - Ils peuvent créer de nouvelles ndonnées avec un encodage arbitraire, contrairement aux autoencodeurs
+
+## Générations d'images
+- Qualité de génération de visages pas possible avec des VAE **simple**
+- Modèle de Nvidia en 2017 (Progressive GAN) apporte du photo réaliste
+- GAN réussissent ces exploits en traînant deux réseaux en compétition coopérative
+  - Générateur: Vise à apprendre à générer des fausses données pour tromper le discriminateur
+  - Discriminateur: Tente d'apprendre à détecter les fausses données
+- Faut trouver un boin compromis dans l'entraînement
+  - Générateur ou discriminateur peut s'entraîner trop vite vs l'autre
+  - Besoin d'une compétition saine entre les deux pour que les deux apprenents
+- Les GAN sont très difficiles à entraîner
+- Les GANS souffrent aussi du problème d'effondrement
+  - Générateur produit des sorties presque similaires pour différents encodages latents    
