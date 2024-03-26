@@ -3,7 +3,7 @@
   - Pas grave si on n'a pas beaucoup avancé
 - Présentation d'article (travail) sera présenté après la pause 
 
-# Graph Neural Networks
+# Graph Neural Networks - GNN
 - Contenu avancé
 - Vu en surface
 - Pas de question avancé sur ce sujet à l'examen
@@ -76,6 +76,14 @@
   - Expressément pour PyTorch   
 - Deep Graph Library
   - Fonctionne avec PyTroch, Tensorflow et Apache MXNet
+ 
+## Limites
+- Un noeud jamais vu n'a pas d'embedding
+- La structure des noeuds n'est pas garder (capturer) comme information
+- On ne peut pas exploiter les caractéristiques avec les méthodes vues
+
+## Propriétés désirables
+- Représentation de graphes devrait être la même pour deux ordres de plan
 
 # Node Embedding
 - Connecté les noeuds dans un espace latent
@@ -112,4 +120,7 @@
 - Toutes sortes de stratégies existent
   - Node2Vec
 
- 
+## Graphe Embedding
+- Méthodes naives:
+  - Utilisation du node embedding et moyenne
+  - Introduire une noeud virtuel pour représenter le sous-graphe et appliquer une technique standard d'embediing de graphe
