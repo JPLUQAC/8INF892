@@ -3,6 +3,8 @@
 - Cours de révision
 - Pas de notes à l'examen
 - Examen papier
+- Il a des vrais/faux
+- Pas de correction négatif
 
 ## Révision
 
