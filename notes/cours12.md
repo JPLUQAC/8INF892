@@ -1,6 +1,8 @@
 # Cours 12 - 9 Avril 2024
 - Examen le 23 avril
 - Cours de révision
+- Pas de notes à l'examen
+- Examen papier
 
 ## Révision
 
