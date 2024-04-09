@@ -47,3 +47,4 @@
   - Comment c'est entraîné
   - DCGAN
   - CGAN 
+- Transformeurs pas à l'examen
