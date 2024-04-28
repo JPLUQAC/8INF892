@@ -21,7 +21,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step. 
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -40,7 +58,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -58,7 +94,25 @@ The following IMU data is collected from an undisclosed sensor on a human partic
 Could you please interpret the given IMU readings and tell what type of sensor it is coming from, what type of data it is and what it could represent? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 

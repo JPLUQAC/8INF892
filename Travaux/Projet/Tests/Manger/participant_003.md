@@ -21,10 +21,119 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step. 
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
 
 ``` 
 
+```
+
+### Réponse - Gemini
+
+``` 
+## Activity Recognition based on IMU Data: Walking Confirmation
+
+Here's a step-by-step analysis of the provided IMU data to determine the participant's activity:
+
+**1. Preprocessing:**
+
+The data snippet includes 100 data points for each axis of the accelerometer at a 100Hz sampling rate. This is a short window, but considering we now know the participant was walking, we can analyze the characteristics expected during walking.
+
+**2. Feature Analysis:**
+
+We'll focus on features indicative of walking:
+
+* **Magnitude:**  The overall acceleration experienced by the watch. During walking, it should have consistent, higher magnitude values on all axes (x, y, z) compared to sleep or eating.
+* **Mean and Standard Deviation:**  Both values will be noticeably higher during walking due to the repetitive motion.
+
+**3. Analysis of the Provided Data Snippet:**
+
+* **Magnitude:**  By visually inspecting a plot of the z-axis data (often dominant during wrist movements), we wouldn't expect low values as previously discussed for sleep analysis. Instead, we should see higher, possibly periodic peaks throughout the window, indicating repetitive arm swing during walking.
+
+* **Mean and Standard Deviation:**  Calculating these from the short window might not be definitive, but they should be noticeably higher than those expected for sleep (close to zero). Higher values would be consistent with the constant acceleration changes during walking.
+
+**4. Conclusion:**
+
+The characteristics observed in the data snippet (assuming the provided data represents a walking period) align with the information that the participant was walking. Here's why:
+
+* The magnitude values wouldn't be as low as those expected for sleep.
+* The mean and standard deviation would likely be higher than those expected for sleep due to the constant motion during walking.
+
+**5. Limitations of Short Window:**
+
+A single 100Hz window (1 second) is still insufficient for definitive classification of activities with similar characteristics (e.g., jogging vs. walking). Analyzing a longer window capturing a few walking cycles would strengthen the analysis.
+
+**Additional Notes:**
+
+* While gyroscope data can further enhance walking detection, the accelerometer data alone provides strong evidence in this case due to the participant confirmation.
+* Machine learning models trained on labeled walking data can achieve robust walking detection using a combination of features and potentially shorter data windows.
+
+Overall, considering the context of walking and the characteristics observed in the provided data snippet, the IMU readings strongly suggest the participant was indeed walking. 
+```
+
+### Réponse - Llama 3
+
+``` 
+Based on the given IMU data, I will analyze the person's action step by step:
+Step 1: Understand the IMU data
+The IMU data consists of acceleration readings from a watch attached to the user's wrist, with a sampling rate of 100Hz. The data is given in the IMU coordinate frame, with three axes: x, y, and z.
+Step 2: Visualize the data
+Plotting the data reveals that:
+
+    The x-axis acceleration has a repetitive pattern of peaks and troughs, indicating a periodic motion.
+    The y-axis acceleration has a relatively constant value with some minor variations.
+    The z-axis acceleration has a similar pattern to the x-axis acceleration, but with a smaller magnitude.
+
+Step 3: Analyze the patterns
+Based on the plots, we can observe that:
+
+    The x-axis acceleration pattern suggests a swinging motion, consistent with the arm movement during walking.
+    The y-axis acceleration is relatively constant, indicating minimal arm or hand movements, which is consistent with walking.
+    The z-axis acceleration pattern also suggests a periodic motion, consistent with the up-and-down movement of the arm during walking.
+
+Step 4: Infer the action
+Considering the patterns and ranges of acceleration, we can infer that:
+
+    The person is not driving, as there are no significant changes in acceleration.
+    The person is not sleeping, as the data indicates a dynamic movement pattern.
+    The person is not eating, as there are no arm or hand movements consistent with eating.
+    The person is likely walking, as the data suggests a periodic motion consistent with the arm movement during walking.
+
+Based on this analysis, I conclude that the person was walking.
+```
+
+### Réponse - Claude
+
+``` 
+To analyze the person's action based on the given IMU data, I will follow these steps:
+
+1. **Understand the Data**:
+   - The IMU data is collected from a watch attached to the user's wrist, with a sampling rate of 100Hz.
+   - The data is provided in the IMU coordinate frame, which typically has the x-axis pointing forward, the y-axis pointing to the left, and the z-axis pointing upwards.
+   - The three-axis accelerations are provided as a list of values.
+
+2. **Analyze the Acceleration Patterns**:
+   - **X-axis Acceleration**:
+     - The x-axis acceleration shows a cyclic pattern, with values ranging from around -1.4 g to -0.1 g.
+     - The acceleration starts at around -0.3 g, then gradually decreases to around -1.4 g, and then increases back to around -0.1 g.
+     - This pattern repeats several times, indicating a repetitive motion.
+   - **Y-axis Acceleration**:
+     - The y-axis acceleration shows a more stable pattern, with values ranging from around 0.0 g to 1.2 g.
+     - There are some fluctuations, but the overall trend is relatively flat.
+   - **Z-axis Acceleration**:
+     - The z-axis acceleration shows a more complex pattern, with both positive and negative values.
+     - The values start around -0.3 g, then increase to around 1 g, and then decrease to around -0.8 g, before repeating the cycle.
+     - This pattern also indicates a repetitive motion, but with more variation compared to the x-axis.
+
+3. **Identify the Possible Activity**:
+   - Based on the observed acceleration patterns, the most likely activity is **walking**.
+   - The cyclic variation in the x-axis acceleration, along with the relatively stable y-axis and the complex z-axis patterns, are characteristic of the acceleration patterns observed during walking.
+   - The magnitude of the accelerations, which range from around -1.4 g to 1 g, is also within the expected range for walking.
+
+4. **Confirm the Activity**:
+   - The provided list of possible activities includes "walking" as one of the options.
+   - Given the analysis of the acceleration patterns, the most likely activity the person was engaged in is **walking**.
+
+In summary, the analysis of the provided IMU data suggests that the person was engaged in the activity of walking. The cyclic variation in the x-axis acceleration, the relatively stable y-axis acceleration, and the complex z-axis acceleration patterns are all consistent with the typical acceleration patterns observed during walking.
 ```
 
 ## Zero-shot avec retrait de certaines données
@@ -40,7 +149,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -58,7 +185,25 @@ The following IMU data is collected from an undisclosed sensor on a human partic
 Could you please interpret the given IMU readings and tell what type of sensor it is coming from, what type of data it is and what it could represent? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 

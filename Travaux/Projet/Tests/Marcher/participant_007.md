@@ -21,10 +21,117 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step. 
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
 
 ``` 
 
+```
+
+### Réponse - Gemini
+
+``` 
+##  Activity Recognition based on IMU Data: Sleep Analysis
+
+Here's a step-by-step analysis of the provided IMU data to assess the likelihood of the person sleeping:
+
+**1. Preprocessing:**
+
+The data snippet includes 100 data points for each axis of the accelerometer at a 100Hz sampling rate. This is a short window, but it can provide some insights for sleep detection, especially considering the context of the participant being known to be sleeping.
+
+**2. Feature Analysis:**
+
+We'll focus on features expected during sleep:
+
+* **Magnitude:** The overall acceleration experienced by the watch. During sleep, it should be generally low with minimal peaks. Occasional larger peaks could indicate body position changes (e.g., rolling over).
+* **Mean and Standard Deviation:** Both should be close to zero due to the lack of significant motion.
+
+**3. Analysis of the Provided Data Snippet:**
+
+* **Magnitude:** By visually inspecting the z-axis data (often dominant during wrist movements), we see minimal peaks, suggesting low overall movement consistent with sleep.
+
+* **Mean and Standard Deviation:** Calculating these from a short window might not be very conclusive. However, assuming the window captures a resting period, both values should be close to zero, aligning with sleep characteristics.
+
+**4. Limitations of Short Window:**
+
+A single 100Hz window (1 second) is insufficient for definitive sleep detection. Ideal sleep detection uses longer recordings capturing sleep cycles with periods of low and potentially high motion (e.g., REM sleep).
+
+**5. Conclusion:**
+
+While the limitations of the short window prevent a definitive conclusion, the low values observed in the magnitude (z-axis) and the expectation of minimal motion during sleep make the provided IMU data snippet more suggestive of sleep activity compared to driving, eating, or walking.
+
+**Additional Considerations for Robust Sleep Detection:**
+
+* **Gyroscope data:** Including gyroscope data (measuring orientation changes) can further strengthen sleep detection. During sleep, wrist orientation shouldn't change drastically.
+* **Thresholding:** Setting thresholds on magnitude, standard deviation, or other features can help classify sleep periods. 
+* **Machine Learning:**  Training a model on labeled sleep/wake IMU data allows for robust classification of sleep stages based on complex motion patterns.
+
+Overall, although a single data snippet has limitations, analyzing IMU data offers promise for sleep detection. Using gyroscope data, longer recordings, and machine learning techniques can lead to reliable sleep monitoring systems.
+```
+
+### Réponse - Llama 3
+
+``` 
+Based on the given IMU data, I will analyze the person's action step by step:
+Step 1: Understand the IMU data
+The IMU data consists of acceleration readings from a watch attached to the user's wrist, with a sampling rate of 100Hz. The data is given in the IMU coordinate frame, with three axes: x, y, and z.
+Step 2: Visualize the data
+Plotting the data reveals that:
+
+    The x-axis acceleration remains relatively constant, with minor variations.
+    The y-axis acceleration is constant, with no significant changes.
+    The z-axis acceleration has some variations, but mostly remains within a small range.
+
+Step 3: Analyze the patterns
+Based on the plots, we can observe that:
+
+    The x-axis acceleration has a small range of variation, indicating minimal movement.
+    The y-axis acceleration is constant, suggesting no significant arm or hand movements.
+    The z-axis acceleration has some variations, but mostly remains within a small range, indicating minimal vertical movement.
+
+Step 4: Infer the action
+Considering the patterns and ranges of acceleration, we can infer that:
+
+    The person is not walking, as there are no significant changes in acceleration.
+    The person is not eating, as there are no arm or hand movements.
+    The person is not driving, as the data indicates minimal movement and no significant changes in acceleration.
+    The person is likely sleeping, as the data suggests a stable and relatively constant acceleration profile, consistent with a person wearing a watch while sleeping.
+
+Based on this analysis, I conclude that the person was sleeping.
+```
+
+### Réponse - Claude
+
+``` 
+To analyze the person's action based on the given IMU data, I will follow these steps:
+
+1. **Understand the Data**:
+   - The IMU data is collected from a watch attached to the user's wrist, with a sampling rate of 100Hz.
+   - The data is provided in the IMU coordinate frame, which typically has the x-axis pointing forward, the y-axis pointing to the left, and the z-axis pointing upwards.
+   - The three-axis accelerations are provided as a list of values.
+
+2. **Analyze the Acceleration Patterns**:
+   - **X-axis Acceleration**:
+     - The x-axis acceleration shows a distinct cyclic pattern, with a range of values from around -2 g to -0.3 g.
+     - The acceleration starts at around -0.9 g, then gradually increases to around -2 g, and then decreases back to around -0.9 g.
+     - This pattern repeats several times, indicating a repetitive motion.
+   - **Y-axis Acceleration**:
+     - The y-axis acceleration shows a more stable pattern, with values ranging from around -0.8 g to 0.4 g.
+     - There are some minor fluctuations, but the overall trend is relatively flat.
+   - **Z-axis Acceleration**:
+     - The z-axis acceleration shows a more complex pattern, with both positive and negative values.
+     - The values start around -0.1 g, then increase to around 0.7 g, and then decrease to around -0.5 g, before repeating the cycle.
+     - This pattern also indicates a repetitive motion, but with more variation compared to the x-axis.
+
+3. **Identify the Possible Activity**:
+   - Based on the observed acceleration patterns, the most likely activity is **walking**.
+   - The cyclic variation in the x-axis acceleration, along with the relatively stable y-axis and the complex z-axis patterns, are characteristic of the acceleration patterns observed during walking.
+   - The magnitude of the accelerations, which range from around -2 g to 0.7 g, is also within the expected range for walking.
+
+4. **Confirm the Activity**:
+   - The provided list of possible activities includes "walking" as one of the options.
+   - Given the analysis of the acceleration patterns, the most likely activity the person was engaged in is **walking**.
+
+In summary, the analysis of the provided IMU data suggests that the person was engaged in the activity of walking. The cyclic variation in the x-axis acceleration, the relatively stable y-axis acceleration, and the complex z-axis acceleration patterns are all consistent with the typical acceleration patterns observed during walking.
 ```
 
 ## Zero-shot avec retrait de certaines données
@@ -40,7 +147,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -58,7 +183,25 @@ The following IMU data is collected from an undisclosed sensor on a human partic
 Could you please interpret the given IMU readings and tell what type of sensor it is coming from, what type of data it is and what it could represent? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 

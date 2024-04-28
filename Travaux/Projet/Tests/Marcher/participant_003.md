@@ -21,10 +21,118 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step. 
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
 
 ``` 
 
+```
+
+### Réponse - Gemini
+
+``` 
+## Activity Recognition based on IMU Data:
+
+Here's a step-by-step analysis of the IMU data to determine the likelihood of the person's activity:
+
+**1. Focus on relevant axis:**
+
+- While all three axes (x, y, z) contain data, the y-axis (up-down) is typically the most informative for detecting eating gestures due to the hand movement bringing food to the mouth.
+
+**2. Look for repetitive patterns:**
+
+- Eating involves bringing food to the mouth in a cyclical motion. We should see this reflected in the y-axis data as fluctuations between positive (lifting food) and negative values (lowering food towards the mouth).
+
+**3. Analyze the y-axis data:**
+
+   - The provided y-axis data shows some fluctuations, with values going from positive to negative and vice versa. This suggests there might be some repetitive motion.
+
+**4. Frequency and magnitude analysis (limited by data window):**
+
+   - Unfortunately, a definitive conclusion cannot be solely based on this short data window. Ideally, we would want to see:
+      - A moderate frequency (1-2 Hz) in the y-axis fluctuations, corresponding to the typical speed of raising and lowering food to the mouth while eating.
+      - A certain magnitude (movement range) in the fluctuations, reflecting the distance between the plate and mouth.
+
+**5. Comparison with other activities:**
+
+   - The provided activities (driving, sleep, walking) are less likely to generate similar repetitive up-down motions in the y-axis with this frequency.
+
+**Overall**:
+
+The data shows **weak indications** of possible repetitive motion in the y-axis, which could be consistent with eating gestures. However, due to the limited data window and lack of information about fluctuation frequency and magnitude, a definitive conclusion cannot be reached.
+
+**Additional considerations**:
+
+- Information about the sampling rate (100Hz) is helpful.
+- A longer data window encompassing the entire eating activity would be ideal for capturing the complete cycle of bringing food to the mouth and back.
+- Combining data from other axes (e.g., z-axis for hand moving forward) could strengthen the analysis.
+- Machine learning algorithms trained on larger datasets of labeled IMU data for different activities can achieve higher accuracy in activity recognition.
+
+**Conclusion**:
+
+Based on the limited data, we can say there's a **weak possibility** the person is eating. For a more confident answer, a longer data window and potentially additional information from other sensors or machine learning techniques would be needed.
+```
+
+### Réponse - Llama 3
+
+``` 
+Step 1: Data Overview
+The IMU data consists of acceleration readings from the x, y, and z axes, sampled at 100 Hz. The data shows variations and patterns that can be indicative of specific actions.
+Step 2: Data Visualization
+Plotting the data reveals:
+
+    The x-axis shows a repetitive pattern of acceleration and deceleration, possibly indicating arm movements.
+    The y-axis shows a similar pattern, but with smaller amplitudes.
+    The z-axis shows a mix of positive and negative accelerations, possibly indicating up and down movements.
+
+Step 3: Data Analysis
+Based on the plots, we can observe:
+
+    The x-axis acceleration pattern suggests repetitive arm movements, possibly due to bringing food to the mouth.
+    The y-axis acceleration pattern indicates smaller lateral movements, possibly due to slight arm rotations.
+    The z-axis acceleration pattern suggests up and down movements, possibly due to lifting utensils or food.
+
+Step 4: Activity Recognition
+Considering the repetitive patterns and variations in the data, I infer that the person is:
+Eating
+The repetitive arm movements, lateral rotations, and up and down movements are consistent with the actions involved in eating, such as bringing food to the mouth and manipulating utensils.
+This analysis is based on the IMU data and may not be definitive, but it strongly suggests that the person is eating.
+Note: The driving and sleep categories are less likely based on the data, as they typically involve more consistent and sustained movements or minimal movement, respectively. Walking may involve more rhythmic and periodic patterns, which are not as evident in this data.
+Please let me know if you have any further questions or if there's anything else I can assist you with!
+```
+
+### Réponse - Claude
+
+``` 
+To analyze the person's action based on the given IMU data, I will follow these steps:
+
+1. **Understand the Data**:
+   - The IMU data is collected from a watch attached to the user's wrist, with a sampling rate of 100Hz.
+   - The data is provided in the IMU coordinate frame, which typically has the x-axis pointing forward, the y-axis pointing to the left, and the z-axis pointing upwards.
+   - The three-axis accelerations are provided as a list of values.
+
+2. **Analyze the Acceleration Patterns**:
+   - **X-axis Acceleration**:
+     - The x-axis acceleration shows a distinct pattern, with a cyclic variation in the values.
+     - The acceleration starts at around -0.4 g, then gradually increases to around -2 g, and then decreases back to around -0.4 g.
+     - This pattern repeats several times, indicating a repetitive motion.
+   - **Y-axis Acceleration**:
+     - The y-axis acceleration shows a more stable pattern, with values ranging from around -1 g to 0.7 g.
+     - There are some minor fluctuations, but the overall trend is relatively flat.
+   - **Z-axis Acceleration**:
+     - The z-axis acceleration shows a more complex pattern, with both positive and negative values.
+     - The values start around 0.2 g, then increase to around 0.7 g, and then decrease to around -0.5 g, before repeating the cycle.
+     - This pattern also indicates a repetitive motion, but with more variation compared to the x-axis.
+
+3. **Identify the Possible Activity**:
+   - Based on the observed acceleration patterns, the most likely activity is **walking**.
+   - The cyclic variation in the x-axis acceleration, along with the relatively stable y-axis and the complex z-axis patterns, are characteristic of the acceleration patterns observed during walking.
+   - The magnitude of the accelerations, which range from around -2 g to 0.7 g, is also within the expected range for walking.
+
+4. **Confirm the Activity**:
+   - The provided list of possible activities includes "walking" as one of the options.
+   - Given the analysis of the acceleration patterns, the most likely activity the person was engaged in is **walking**.
+
+In summary, the analysis of the provided IMU data suggests that the person was engaged in the activity of walking. The cyclic variation in the x-axis acceleration, the relatively stable y-axis acceleration, and the complex z-axis acceleration patterns are all consistent with the typical acceleration patterns observed during walking.
 ```
 
 ## Zero-shot avec retrait de certaines données
@@ -40,7 +148,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -58,7 +184,25 @@ The following IMU data is collected from an undisclosed sensor on a human partic
 Could you please interpret the given IMU readings and tell what type of sensor it is coming from, what type of data it is and what it could represent? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 

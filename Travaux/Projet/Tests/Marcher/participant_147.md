@@ -21,10 +21,110 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step. 
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
 
 ``` 
 
+```
+
+### Réponse - Gemini
+
+``` 
+## Step-by-Step Analysis of IMU Data for Activity Recognition:
+
+**1. Focus on the y-axis:**
+
+The y-axis data is most informative for detecting eating gestures due to the up-down movement of the hand bringing food to the mouth.
+
+**2. Analyze Fluctuations in y-axis:**
+
+We see fluctuations in the y-axis data, with values going from positive (lifting food) to negative (lowering food towards the mouth). This suggests there might be some repetitive motion.
+
+**3. Frequency and Magnitude Analysis (limited by data window):**
+
+Unfortunately, a definitive conclusion cannot be solely based on this short data window. Ideally, we would want to see:
+
+  * **Frequency:** A moderate frequency (1-2 Hz) in the y-axis fluctuations, corresponding to the typical speed of raising and lowering food to the mouth while eating.
+  * **Magnitude:** A certain magnitude (movement range) in the fluctuations, reflecting the distance between the plate and mouth.
+
+**4. Comparison with Other Activities:**
+
+The provided activities (driving, sleep, walking) are less likely to generate similar repetitive up-down motions in the y-axis with this frequency. While driving might involve some hand movement on the steering wheel, it's typically less frequent and with a smaller range of motion compared to eating. Sleep typically involves minimal movement, and walking would show a more rhythmic pattern with peaks at each footfall (which wouldn't be on the y-axis). 
+
+**5. Utilizing Additional Information (if available):**
+
+Data from other axes (x-axis: forward-backward movement, z-axis: side-to-side movement) could strengthen the analysis. For example, the x-axis might show a small forward movement when bringing food to the mouth.
+
+**6. Machine Learning Techniques (for future reference):**
+
+Machine learning algorithms trained on larger datasets of labeled IMU data for different activities can achieve higher accuracy in activity recognition. 
+
+**Conclusion:**
+
+Considering the limited data window, the fluctuations in the y-axis suggest a **possible** indication of eating. However, for a more confident answer, a longer data window and potentially information from other sensors or machine learning techniques would be needed.
+ 
+**Overall, based on the provided information, there's a weak possibility the person is eating.**
+
+```
+
+### Réponse - Llama 3
+
+``` 
+Based on the IMU data, I infer that the person is eating. Here's my step-by-step analysis:
+Step 1: Data Overview
+The IMU data consists of acceleration readings from the x, y, and z axes, sampled at 100 Hz. The data shows variations and patterns that can be indicative of specific actions.
+Step 2: Data Visualization
+Plotting the data reveals:
+
+    The x-axis shows a repetitive pattern of acceleration and deceleration, possibly indicating arm movements.
+    The y-axis shows a similar pattern, but with smaller amplitudes.
+    The z-axis shows a mix of positive and negative accelerations, possibly indicating up and down movements.
+
+Step 3: Data Analysis
+Based on the plots, we can observe:
+
+    The x-axis acceleration pattern suggests repetitive arm movements, possibly due to bringing food to the mouth.
+    The y-axis acceleration pattern indicates smaller lateral movements, possibly due to slight arm rotations.
+    The z-axis acceleration pattern suggests up and down movements, possibly due to lifting utensils or food.
+
+Step 4: Activity Recognition
+Considering the repetitive patterns and variations in the data, I infer that the person is eating. The repetitive arm movements, lateral rotations, and up and down movements are consistent with the actions involved in eating, such as bringing food to the mouth and manipulating utensils.
+This analysis is based on the IMU data and may not be definitive, but it strongly suggests that the person is eating.
+Note: The driving and sleep categories are less likely based on the data, as they typically involve more consistent and sustained movements or minimal movement, respectively. Walking may involve more rhythmic and periodic patterns, which are not as evident in this data.
+```
+
+### Réponse - Claude
+
+``` 
+To analyze the person's action based on the given IMU data, I will follow these steps:
+
+1. **Understand the Data**:
+   - The IMU data is collected from a watch attached to the user's wrist, with a sampling rate of 100Hz.
+   - The data is provided in the IMU coordinate frame, which typically has the x-axis pointing forward, the y-axis pointing to the left, and the z-axis pointing upwards.
+   - The three-axis accelerations are provided as a list of values.
+
+2. **Analyze the Acceleration Patterns**:
+   - **X-axis Acceleration**:
+     - The x-axis acceleration shows a cyclic pattern, with values ranging from around -1.3 g to -0.4 g.
+     - The acceleration starts at around -0.7 g, then gradually decreases to around -1.3 g, and then increases back to around -0.4 g.
+     - This pattern repeats several times, indicating a repetitive motion.
+   - **Y-axis Acceleration**:
+     - The y-axis acceleration shows a more stable pattern, with values ranging from around 0.3 g to 0.7 g.
+     - There are some fluctuations, but the overall trend is relatively flat.
+   - **Z-axis Acceleration**:
+     - The z-axis acceleration shows a more complex pattern, with values ranging from around -0.9 g to 0 g.
+     - The acceleration starts at around -0.5 g, then gradually decreases to around -0.9 g, and then increases back to around 0 g, before repeating the cycle.
+
+3. **Identify the Possible Activity**:
+   - Based on the observed acceleration patterns, the most likely activity is **walking**.
+   - The cyclic variation in the x-axis acceleration, along with the relatively stable y-axis and the complex z-axis patterns, are characteristic of the acceleration patterns observed during walking.
+   - The magnitude of the accelerations, which range from around -1.3 g to 0 g, is also within the expected range for walking.
+
+4. **Confirm the Activity**:
+   - The provided list of possible activities includes "walking" as one of the options.
+   - Given the analysis of the acceleration patterns, the most likely activity the person was engaged in is **walking**.
+
+In summary, the analysis of the provided IMU data suggests that the person was engaged in the activity of walking. The cyclic variation in the x-axis acceleration, the relatively stable y-axis acceleration, and the complex z-axis acceleration patterns are all consistent with the typical acceleration patterns observed during walking.
 ```
 
 ## Zero-shot avec retrait de certaines données
@@ -40,7 +140,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -58,7 +176,25 @@ The following IMU data is collected from an undisclosed sensor on a human partic
 Could you please interpret the given IMU readings and tell what type of sensor it is coming from, what type of data it is and what it could represent? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 

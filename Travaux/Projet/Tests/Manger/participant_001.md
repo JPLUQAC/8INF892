@@ -21,10 +21,111 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step. 
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
 
 ``` 
 
+```
+
+### Réponse - Gemini
+
+``` 
+## Analyzing IMU data for Human Activity Recognition
+
+I can definately help you analyze the provided IMU data for Human Activity Recognition (HAR). However, directly analyzing the raw acceleration data (which you provided) is not very efficient. Here's a general approach to analyze IMU data for HAR:
+
+**Preprocessing:**
+
+1. **Filtering:** The raw acceleration data might contain noise from various sources. Applying filters like a Butterworth filter can help remove unwanted noise while preserving the signal of interest.
+2. **Segmentation:** IMU data is typically collected continuously. To identify specific activities, we need to segment the data into windows representing short periods. The window size depends on the activity you are trying to detect (e.g., walking might require a larger window than finger tapping).
+3. **Feature Extraction:** From each data window, relevant features need to be extracted that effectively represent the underlying activity. Common features include:
+    * **Magnitude of acceleration:** This is the overall strength of the acceleration vector and can be informative for activities with high movement intensity.
+    * **Mean and standard deviation:** These capture the average and spread of acceleration values within the window.
+    * **Frequency domain features:** Activities often have characteristic frequencies in their acceleration patterns. Techniques like Fast Fourier Transform (FFT) can be used to capture these features.
+
+**Model Training:**
+
+Once you have extracted features, you can use them to train a machine learning model to classify activities. Popular choices include:
+
+* **Support Vector Machines (SVM):** Effective for recognizing activities with distinct feature patterns.
+* **Random Forests:** These ensemble methods combine multiple decision trees for robust classification.
+* **Deep Learning models (Convolutional Neural Networks - CNNs or Recurrent Neural Networks - RNNs):** Can be very powerful, especially when dealing with large datasets and complex activities.
+
+**Evaluation:**
+
+After training the model, you need to evaluate its performance on unseen data. This typically involves splitting your data into training and testing sets. The model is trained on the training data and its performance is evaluated on the testing data using metrics like accuracy, precision, and recall.
+
+**Here are some limitations to consider with the provided data snippet:**
+
+* A short data snippet might not be sufficient to train a robust model for complex activity recognition.
+* The information about the user's activity while the data was collected is missing. This is crucial for supervised learning approaches.
+
+If you have labelled data (information about the activities performed while collecting the IMU data) for a longer duration, you can follow the approach mentioned above to build a model for activity recognition.
+
+For further information, you can refer to these resources: [https://link.springer.com/article/10.1007/s00521-023-08863-9](https://link.springer.com/article/10.1007/s00521-023-08863-9) or [https://www.mdpi.com/1424-8220/21/24/8337](https://www.mdpi.com/1424-8220/21/24/8337) 
+```
+
+### Réponse - Llama 3
+
+``` 
+Based on the IMU readings, I will analyze the data to determine the person's action. Here's the step-by-step analysis:
+Step 1: Data Preprocessing
+The given data is already in a suitable format, with acceleration values in the x, y, and z axes.
+Step 2: Feature Extraction
+
+    Calculate the magnitude of acceleration (total acceleration) using the formula: sqrt(x^2 + y^2 + z^2)
+    Calculate the mean, standard deviation, and variance of the total acceleration
+
+Feature Extraction Results:
+
+    Mean total acceleration: 0.543
+    Standard deviation of total acceleration: 0.343
+    Variance of total acceleration: 0.118
+
+Step 3: Pattern Identification
+
+    Analyze the patterns in the extracted features to identify characteristics of each action:
+        Driving: Typically has a relatively constant and higher acceleration magnitude due to the vehicle's motion.
+        Sleep: Usually has a very low acceleration magnitude, with minimal movements.
+        Eating: Typically has short bursts of higher acceleration magnitude due to arm and hand movements.
+        Walking: Has a cyclical pattern of acceleration magnitude due to the person's gait.
+
+Pattern Identification and Classification:
+
+    The mean total acceleration is moderate, and the standard deviation and variance are relatively high, indicating a mix of movements.
+    The data shows a cyclical pattern, with repeated peaks and troughs in the acceleration magnitude, which is characteristic of Walking.
+    The magnitude of acceleration is not consistently high, which rules out Driving.
+    The data does not show very low acceleration, which rules out Sleep.
+    The bursts of higher acceleration are not short and frequent enough to indicate Eating.
+
+Based on the analysis, I classify the person's action as Walking.
+Please note that this classification is based on a single IMU recording and might not be 100% accurate. Additional data and machine learning algorithms could improve the classification accuracy.
+```
+
+### Réponse - Claude
+
+``` 
+Alright, let's analyze the IMU data step-by-step to determine the person's activity:
+
+1. **Understand the data format**:
+   - The IMU data is collected from a wrist-worn device at a sampling rate of 100Hz.
+   - The data is provided in the IMU coordinate frame, with three-axis acceleration values (x, y, z).
+
+2. **Analyze the acceleration patterns**:
+   - **X-axis acceleration**: The x-axis acceleration values show a relatively consistent pattern, with the magnitude ranging from around -0.6 to 1.0 g. There is a gradual decrease and increase in the acceleration values, but no clear cyclic pattern.
+   - **Y-axis acceleration**: The y-axis acceleration values also show a consistent pattern, with the magnitude ranging from around -0.8 to -0.5 g. The values are relatively stable, with only minor fluctuations.
+   - **Z-axis acceleration**: The z-axis acceleration values show a more varied pattern, with the magnitude ranging from around 0.0 to 0.8 g. There is a gradual increase and decrease in the acceleration values, but no clear cyclic pattern.
+
+3. **Compare the acceleration patterns with the known activities**:
+   - **Driving**: The acceleration patterns do not match the typical characteristics of driving, which would show more dynamic and varied acceleration values, especially in the x-axis and y-axis.
+   - **Sleep**: The acceleration patterns are too dynamic and varied to be associated with sleep, which would typically show very low-magnitude acceleration values.
+   - **Eating**: The acceleration patterns are not consistent with the expected characteristics of eating, which would involve smaller, more localized movements.
+   - **Walking**: The acceleration patterns do not exhibit the clear cyclic patterns typically observed during walking, which would show a more pronounced repetitive motion in the x-axis and y-axis.
+
+4. **Conclusion**:
+   Based on the analysis of the IMU data, the person's activity is most likely not one of the four categories provided (driving, sleep, eating, or walking). The acceleration patterns do not match the expected characteristics of these activities.
+
+In summary, the step-by-step analysis of the IMU data suggests that the person's activity is not one of the given categories. The acceleration patterns do not exhibit the typical characteristics of driving, sleep, eating, or walking. Further investigation would be needed to determine the actual activity being performed.
 ```
 
 ## Zero-shot avec retrait de certaines données
@@ -40,7 +141,25 @@ The person's action belongs to one of the following categories: [driving, sleep,
 Could you please tell what action the person was doing based on the given information and IMU readings? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
@@ -58,7 +177,25 @@ The following IMU data is collected from an undisclosed sensor on a human partic
 Could you please interpret the given IMU readings and tell what type of sensor it is coming from, what type of data it is and what it could represent? Please make an analysis step by step.
 ```
 
-### Réponse
+### Réponse - Chat GPT3.5
+
+``` 
+
+```
+
+### Réponse - Gemini
+
+``` 
+
+```
+
+### Réponse - Llama 3
+
+``` 
+
+```
+
+### Réponse - Claude
 
 ``` 
 
