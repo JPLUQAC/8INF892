@@ -30,19 +30,122 @@ Could you please tell what action the person was doing based on the given inform
 ### Réponse - Gemini
 
 ``` 
+## Activity Recognition based on Wrist IMU Data:
 
+Following the previous approach, here's a step-by-step analysis of the new IMU data to infer the user's activity:
+
+**1. Preprocessing (already done):**
+
+The data appears free of significant noise, so we'll proceed without additional filtering.
+
+**2. Feature Extraction:**
+
+This data window (likely longer than 2 seconds) offers a better chance to distinguish activities. Let's extract the same features:
+
+* **Magnitude:**
+
+* **Dominant Axis:**
+
+**3. Analysis based on Extracted Features:**
+
+* **Magnitude:**
+
+  * Calculate the average and maximum magnitude to understand movement intensity.
+  * A high average magnitude suggests periods of higher movement compared to sleep or eating.
+
+* **Dominant Axis:**
+
+  * Analyze the dominant axis:
+      * X (forward-backward): Consistent X-axis dominance could suggest driving, but analyze magnitude for further confirmation. 
+      * Y (side-to-side): Still less likely for the provided activities in this timeframe.
+      * Z (up-down): Repetitive Z-axis dominance strengthens the possibility of walking.
+
+**4. Interpretation:**
+
+* **Sleep:** The presence of consistent low acceleration on all axes, especially for a longer window, makes sleep a more viable candidate here.
+
+* **Eating:** Eating might involve minimal wrist movement, especially for this potentially longer window. However, the presence of higher magnitude bursts could indicate lifting food or utensils.
+
+**5. Tentative Activity:**
+
+* **Driving:** The possibility of X-axis dominance (forward-backward movement) needs further confirmation with magnitude analysis. 
+
+* **Walking:** The Z-axis dominance (up-down movement) remains a strong indicator of walking.
+
+* **Sleep:** Low overall magnitude throughout the window strengthens the possibility of sleep. 
+
+**6. Limitations and Conclusion:**
+
+* Without knowing the data window size, a definitive conclusion is challenging. 
+*  However, compared to the previous short window, the presence of potentially longer periods of low activity suggests sleep as a strong possibility.
+
+**Considering the limitations:**
+
+  * The data suggests possibilities of walking, sleep, and potentially even driving based on X-axis dominance (if accompanied by high magnitude).
+  * A more conclusive analysis would require information about the data window size and potentially additional features or a trained model.
+
+For robust activity recognition, a larger data window, additional sensors (e.g., gyroscope), or a trained model on a larger dataset with labelled activities would be highly beneficial.
 ```
 
 ### Réponse - Llama 3
 
 ``` 
+Step 1: Understand the IMU data
+The IMU data consists of three-axis acceleration readings (x, y, z) sampled at 100Hz. The values represent the acceleration in meters per second squared (m/s^2).
+Step 2: Visualize the data
+Plotting the data reveals some patterns and insights:
 
+    The x-axis acceleration has a wide range, indicating significant movement.
+    The y-axis acceleration has a smaller range, with some periodic patterns.
+    The z-axis acceleration has a mix of positive and negative values, indicating up and down movements.
+
+Step 3: Identify patterns and features
+
+    The x-axis acceleration pattern suggests rapid movements, potentially related to walking or arm movements.
+    The y-axis acceleration pattern resembles a sinusoidal wave, which might indicate a repetitive action like walking or eating.
+    The z-axis acceleration pattern indicates up and down movements, consistent with walking or arm movements.
+
+Step 4: Analyze the patterns and features
+Considering the patterns and features, I can make some educated guesses about the person's action:
+
+    The rapid movements in the x-axis acceleration and the sinusoidal pattern in the y-axis acceleration suggest walking.
+    The up and down movements in the z-axis acceleration support this hypothesis, as they are consistent with the up and down movements of the arm during walking.
+    Driving is less likely, as it would likely involve more significant changes in acceleration and orientation.
+    Eating is possible, but the patterns are more consistent with walking.
+    Sleep is unlikely, as the data shows some periodic motion, which is inconsistent with a sleeping person.
+
+Conclusion
+Based on the analysis, I believe the person was walking. The rapid movements and sinusoidal patterns in the x and y axes, respectively, support this conclusion. The up and down movements in the z-axis acceleration also support this hypothesis.
+Please note that this analysis is based on a single IMU dataset and might not be entirely accurate. Additional data or context would help confirm the conclusion.
 ```
 
 ### Réponse - Claude
 
 ``` 
+To analyze the person's activity based on the provided IMU (Inertial Measurement Unit) data, we can follow these steps:
 
+1. **Understand the data format**:
+   - The IMU data is collected from a watch attached to the user's wrist with a sampling rate of 100 Hz.
+   - The data is provided in the IMU coordinate frame, which means the x-axis, y-axis, and z-axis correspond to the watch's orientation.
+   - The three-axis accelerations are provided as a list of values for each axis.
+
+2. **Analyze the acceleration patterns**:
+   - The x-axis acceleration values show a wide range of variations, starting from around -1.80 g and reaching up to -0.69 g, indicating significant dynamic movements along the x-axis.
+   - The y-axis acceleration values also exhibit a wide range, fluctuating between around -0.70 g and 0.17 g, suggesting significant dynamic movements in the y-direction.
+   - The z-axis acceleration values range from around -0.41 g to 0.32 g, indicating significant dynamic movements in the z-direction.
+
+3. **Interpret the acceleration patterns**:
+   - The large variations in acceleration across all three axes suggest that the person's wrist is experiencing significant dynamic movements, which is characteristic of an active, dynamic activity.
+   - The observed acceleration patterns are more indicative of an activity involving repetitive, rhythmic movements, such as walking or running.
+
+4. **Identify the possible activities**:
+   - Based on the provided list of activities (driving, sleep, eating, walking), the acceleration patterns observed are most consistent with the "walking" activity.
+   - The repetitive, rhythmic movements of the wrist during walking match the characteristics of the IMU data.
+
+5. **Conclusion**:
+   Based on the analysis of the provided IMU data, the person was most likely walking during the recorded time period.
+
+In summary, the wide range of acceleration values in the x, y, and z-axes, indicating significant dynamic movements, suggest that the person was engaged in an active, dynamic activity, which aligns with the "walking" category from the given list of possible activities.
 ```
 
 ## Zero-shot avec retrait de certaines données

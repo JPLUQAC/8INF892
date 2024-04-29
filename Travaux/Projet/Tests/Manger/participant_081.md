@@ -30,19 +30,129 @@ Could you please tell what action the person was doing based on the given inform
 ### Réponse - Gemini
 
 ``` 
+##  Activity Recognition based on IMU data (Limited Analysis)
+
+**1. Preprocessing (Not Performed Here):**
+
+Similar to before, due to the limited data snippet, we cannot perform preprocessing steps.
+
+**2. Feature Extraction:**
+
+We will again calculate the magnitude for each data point in all three axes.
+
+**3. Limited Analysis based on Magnitude:**
+
+* **Activity characteristics based on magnitude:**
+    * Driving: Generally involves higher acceleration magnitudes.
+    * Sleep: Relatively low and constant acceleration magnitudes.
+    * Eating:  Might involve small, repetitive motions with lower to moderate acceleration magnitudes.
+    * Walking:  Shows periodic variations in magnitude corresponding to leg movements with potentially higher peaks compared to eating.
+
+**4. Analysis of the snippet (100 samples at 100Hz):**
+
+* **Observations:**
+    * There are fluctuations in the magnitude across all three axes (x, y, z). However, these fluctuations seem relatively small compared to what might be expected during driving. 
+    * The magnitudes don't reach particularly high values throughout the data window.
+
+**5. Step-by-Step Analysis:**
+
+1. **Calculate Magnitude:** As discussed earlier, we can calculate the Euclidian norm for each data point to get the overall acceleration magnitude. [refer to previous explanation of the function]
+2. **Observe Magnitude Distribution:** 
+    * Plot the distribution of the calculated magnitudes (all 100 samples) for a better visualization. 
+    * Look for peaks or significant variations that could indicate higher activity levels.
+3. **Compare to Expected Ranges:** 
+    * While we cannot definitively classify the activity due to limited data, compare the observed magnitude distribution to what might be expected for activities like walking or eating. 
+    * You can find resources online that provide sample ranges of acceleration magnitudes for different activities ([https://ieeexplore.ieee.org/document/9848941](https://ieeexplore.ieee.org/document/9848941)).
+
+**6. Limitations and Conclusion:**
+
+* The short data window (1 second) makes it challenging to capture activity patterns definitively. 
+* A trained machine learning model considering additional features and a longer data window would provide more accurate classification.
+
+**7. Likely Activity (Considering Limitations):**
+
+Based on the limited observations of relatively low magnitudes with minimal variations, activities like **sleep** or **eating** seem more likely compared to driving or intense walking.
+
+**Remember, this is just an educated guess due to limitations. A more comprehensive analysis would require a longer data window and potentially a trained model.**
 
 ```
 
 ### Réponse - Llama 3
 
 ``` 
+Based on the provided IMU data, I will perform a step-by-step analysis to determine the person's action.
+Step 1: Data Overview
+The IMU data consists of 3-axis acceleration values (x, y, z) sampled at 100Hz. The data appears to be relatively stable, with some variations in the x-axis and smaller variations in the y and z axes.
+Step 2: Data Preprocessing
+To better understand the data, I will calculate the magnitude of the acceleration vector (sqrt(x^2 + y^2 + z^2)) and plot the resulting signal.
+Step 3: Feature Extraction
+From the preprocessed signal, I will extract relevant features that can help distinguish between the four actions:
 
+    Mean acceleration magnitude
+    Standard deviation of acceleration magnitude
+    Peak-to-peak amplitude
+    Frequency domain features (e.g., spectral power in different frequency bands)
+
+Step 4: Feature Analysis
+Based on the extracted features, I observe the following:
+
+    Mean acceleration magnitude: relatively low (~0.85) and consistent across the data
+    Standard deviation of acceleration magnitude: relatively low (~0.03) and consistent across the data
+    Peak-to-peak amplitude: relatively small (~0.02) and consistent across the data
+    Frequency domain features: the signal appears to be mostly concentrated in the low-frequency range (<10 Hz), with some minor peaks in the 10-20 Hz range
+
+Step 5: Action Classification
+Based on the feature analysis, I conclude that the person was most likely driving. The low and consistent acceleration magnitude, small peak-to-peak amplitude, and low-frequency dominant signal suggest a relatively stable and smooth motion, consistent with driving a vehicle.
+Here's a brief explanation for why I ruled out the other options:
+
+    Sleep: The data shows some minor variations, which is unlikely for a person sleeping.
+    Eating: The acceleration magnitude is too low and consistent, whereas eating would likely involve more movement and variation.
+    Walking: The signal lacks the characteristic periodic pattern and higher frequency components typically seen in walking data.
+
+Please note that this analysis is based on a limited dataset and might not be conclusive. Additional data or more advanced machine learning techniques could provide a more robust classification.
+Here is the summary in markdown format:
+Action Classification
+Based on the IMU data analysis, the person was most likely driving.
+Reasoning
+
+    Low and consistent acceleration magnitude
+    Small peak-to-peak amplitude
+    Low-frequency dominant signal
+
+Ruled-out Options
+
+    Sleep: Minor variations in data unlikely for sleeping
+    Eating: Low and consistent acceleration magnitude, unlike eating movements
+    Walking: Lack of periodic pattern and higher frequency components typical of walking data
 ```
 
 ### Réponse - Claude
 
 ``` 
+To analyze the person's activity based on the provided IMU (Inertial Measurement Unit) data, we can follow these steps:
 
+1. **Understand the data format**:
+   - The IMU data is collected from a watch attached to the user's wrist with a sampling rate of 100 Hz.
+   - The data is provided in the IMU coordinate frame, which means the x-axis, y-axis, and z-axis correspond to the watch's orientation.
+   - The three-axis accelerations are provided as a list of values for each axis.
+
+2. **Analyze the acceleration patterns**:
+   - The x-axis acceleration values show a significant range of variations, starting from around -0.55 g and reaching up to -1.58 g, indicating dynamic movements along the x-axis.
+   - The y-axis acceleration values also exhibit a wide range, fluctuating between around -0.57 g and 0.67 g, suggesting dynamic movements in the y-direction.
+   - The z-axis acceleration values range from around -0.55 g to 0.22 g, again indicating dynamic movements in the z-direction.
+
+3. **Interpret the acceleration patterns**:
+   - The large variations in acceleration across all three axes suggest that the person's wrist is experiencing significant dynamic movements, which is not typical of a static or low-dynamic activity like sleeping.
+   - The observed acceleration patterns are more indicative of an active, dynamic activity.
+
+4. **Identify the possible activities**:
+   - Based on the provided list of activities (driving, sleep, eating, walking), the acceleration patterns observed are most consistent with the "walking" activity.
+   - During walking, the person's wrist would experience significant dynamic movements in all three axes due to the repetitive motion of the arm and hand.
+
+5. **Conclusion**:
+   Based on the analysis of the provided IMU data, the person was most likely walking during the recorded time period.
+
+In summary, the wide range of acceleration values in the x, y, and z-axes, indicating dynamic movements, suggests that the person was engaged in an active, dynamic activity, which aligns with the "walking" category from the given list of possible activities.
 ```
 
 ## Zero-shot avec retrait de certaines données

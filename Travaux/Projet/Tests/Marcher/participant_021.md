@@ -30,19 +30,99 @@ Could you please tell what action the person was doing based on the given inform
 ### Réponse - Gemini
 
 ``` 
+## Analyzing Human Activity from IMU Data
 
+You've provided a snippet of IMU data from a wrist-worn device capturing accelerations on three axes (x, y, z) at a sampling rate of 100Hz. While analyzing a small snippet like this is difficult to definitively determine the activity, here's a general approach to analyze IMU data for human activity recognition:
+
+**Preprocessing:**
+
+1. **Noise Reduction:** IMU data can be noisy due to sensor limitations and movement artifacts. Techniques like filtering (e.g., Butterworth filter) can be applied to reduce noise.
+2. **Segmentation:** The data stream needs to be segmented into smaller windows representing potential activities. Window size depends on the activity of interest (e.g., walking might require a larger window than finger tapping).
+3. **Feature Extraction:** From each window, relevant features are extracted that quantify the movement characteristics. Common features include:
+    - Mean, standard deviation, and other statistical measures of acceleration on each axis.
+    - Magnitude of the net acceleration (sqrt(x^2 + y^2 + z^2)).
+    - Frequency domain features using Fast Fourier Transform (FFT) to analyze movement periodicity.
+
+**Feature Engineering:**
+
+Depending on the chosen model (explained later), additional features might be engineered from the extracted ones. For instance, calculating the difference between consecutive acceleration values.
+
+**Model Selection and Training:**
+
+Machine learning or deep learning models can be used to classify activities based on the extracted features. Common choices include:
+
+* **Support Vector Machines (SVM):** Effective for smaller datasets and works well with handcrafted features.
+* **Random Forests:** Robust to overfitting and handles various feature types.
+* **Deep Learning Models (e.g., Convolutional Neural Networks - CNNs):** Powerful for capturing complex relationships in data, especially when large datasets are available.
+
+The chosen model needs to be trained on a labeled dataset containing IMU recordings of various activities. During training, the model learns to associate feature patterns with specific activities.
+
+**Classification and Post-Processing:**
+
+Once trained, the model can classify new, unseen IMU data segments based on the extracted features. Depending on the application, post-processing techniques like majority voting over a window or smoothing the classification results might be employed.
+
+**Considerations for your data snippet:**
+
+Without additional information and context, it's challenging to determine the specific activity from the provided snippet. However, some observations can be made:
+
+* The presence of both positive and negative acceleration values suggests dynamic movements. 
+* The magnitude might provide clues about the intensity of the movement (higher values for vigorous activities).
+
+**Further steps:**
+
+To effectively analyze your IMU data, you'll need the complete data recording and information about the activities performed while wearing the device. With that information, you can follow the steps mentioned above to build a model for activity recognition.
 ```
 
 ### Réponse - Llama 3
 
 ``` 
+Step 1: Data Overview
+The given data consists of acceleration values along three axes (x, y, and z) with a sampling rate of 100Hz. The values are represented as floating-point numbers with a high degree of precision.
+Step 2: Data Analysis
+Let's analyze the data to understand what it could represent:
 
+    x-axis: The values are mostly constant, with a slight variation around -0.85. This could indicate a steady-state condition or a constant acceleration in the x-direction.
+    y-axis: The values exhibit periodic spikes, which could indicate repetitive motion.
+    z-axis: The values are mostly constant, with a slight variation around 0.35. This could indicate a steady-state condition or a constant acceleration in the z-direction.
+
+Step 3: Pattern Identification
+Upon closer inspection, we can identify some patterns in the data:
+
+    The x-axis values remain relatively constant, with minimal variations.
+    The y-axis values exhibit periodic spikes, which could indicate repetitive motion.
+    The z-axis values also remain relatively constant, with minimal variations.
+
+Step 4: Action Identification
+Based on the patterns identified, we can make an educated guess about the person's action:
+
+    The constant x-axis values and minimal variations in z-axis values suggest that the person is not experiencing significant changes in acceleration or orientation, which rules out actions like walking or driving.
+    The periodic spikes in the y-axis values could indicate repetitive motion, such as arm or hand movement, which is consistent with eating.
+
+Conclusion
+Based on the analysis, it is likely that the person was eating. The periodic spikes in the y-axis values suggest repetitive motion, which is consistent with the act of eating. Additionally, the constant values in the x and z axes indicate a relatively steady state, which is also consistent with a seated or stationary activity like eating.
+Please note that this analysis is based on a limited dataset and might not be entirely accurate. Additional data or context would be required to confirm the person's action with higher certainty.
 ```
 
 ### Réponse - Claude
 
 ``` 
+To determine the person's action based on the provided IMU data, I will perform the following analysis:
 
+1. **Acceleration Patterns Analysis**:
+   - X-axis: The x-axis acceleration data shows a wide range of values, varying from around -1.4 g to -0.5 g, with significant fluctuations. This pattern is characteristic of dynamic movements, such as those observed during walking or other ambulatory activities.
+   - Y-axis: The y-axis acceleration data also exhibits a wide range, from around -1.0 g to -0.3 g, with frequent changes in magnitude. This suggests the person's wrist is undergoing rotational and translational movements, which is typical of activities involving the hands and arms.
+   - Z-axis: The z-axis acceleration data shows a range from around 0.1 g to -0.7 g, with some distinct peaks and valleys. This indicates that the person's wrist is experiencing significant vertical accelerations, consistent with walking or other dynamic activities.
+
+2. **Potential Activities**:
+   - Driving: The dynamic and fluctuating acceleration patterns across all three axes do not match the typical acceleration profiles observed during driving, which would involve more consistent and smooth accelerations.
+   - Sleeping: The variable and high-magnitude acceleration patterns are not characteristic of a person in a resting or sleeping state, where minimal wrist movements would be expected.
+   - Eating: The acceleration patterns exhibit more significant and rapid changes than what would be expected during the hand-to-mouth motion associated with eating.
+   - Walking: The wide range of accelerations, especially in the vertical (z-axis) direction, as well as the frequent changes in magnitude and direction, are consistent with the characteristics of walking or other ambulatory activities.
+
+3. **Conclusion**:
+   Based on the analysis of the IMU data, the person's activity is most likely **walking** or engaged in some other form of **ambulatory** movement. The dynamic and fluctuating acceleration patterns across all three axes, along with the significant vertical accelerations, are indicative of the repetitive and dynamic movements associated with walking or similar physical activities.
+
+In summary, the provided IMU data suggests that the person is likely **walking** or engaged in a similar physical activity, rather than driving, sleeping, or eating.
 ```
 
 ## Zero-shot avec retrait de certaines données

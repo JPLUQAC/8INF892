@@ -30,19 +30,102 @@ Could you please tell what action the person was doing based on the given inform
 ### Réponse - Gemini
 
 ``` 
+## Analyzing Human Activity from IMU Data
 
+I can definitely help you analyze the human activity from the provided IMU data. Here's a breakdown of the process:
+
+**1. Preprocessing:**
+
+* The data you provided is the raw acceleration measured on three axes (x, y, z) at a sampling rate of 100Hz.
+* There might be noise or bias in the sensor data. You can apply filtering techniques to remove noise and correct for bias.
+* Depending on the desired analysis, you might need to segment the data into windows. Each window would represent a short period of time (e.g., 1 second) where the activity is assumed to be constant. 
+
+**2. Feature Extraction:**
+
+* From the preprocessed acceleration data, we can extract features that are informative for activity recognition. Here are some common features:
+    * Magnitude of the acceleration: This is calculated as the square root of the sum of squares of the accelerations on each axis.
+    * Mean and standard deviation of the acceleration on each axis.
+    * Frequency domain features: Applying Fast Fourier Transform (FFT) on the acceleration data can reveal characteristics of the movement in the frequency domain.
+
+**3. Classification:**
+
+* Once you have extracted features, you can use machine learning algorithms to classify the activity. Here are some common approaches:
+    * Support Vector Machines (SVM): This is a popular supervised learning algorithm that can be effective for activity recognition.
+    * Random Forests: This is another supervised learning algorithm that can handle high-dimensional data like features extracted from IMU sensors.
+    * Hidden Markov Models (HMMs): This is a probabilistic graphical model that can model sequences of activities, which can be useful for recognizing activities that unfold over time.
+
+**4. Considerations for your data:**
+
+* The short snippet of data provided might not be sufficient to definitively identify the activity. More data with a wider variety of activities would be needed to train a robust classification model.
+* The performance of the activity recognition model depends on the chosen features and the classification algorithm. Experimentation with different techniques might be necessary to achieve optimal results.
+
+**Additional notes:**
+
+* There are also deep learning approaches gaining traction in activity recognition,  which can automatically learn features from raw sensor data.
+* The choice of method depends on the specific application and the desired level of accuracy.
+
+For further analysis, I would recommend providing information about the context in which the data was collected (e.g., was the person walking, running, sitting?) This can help in selecting appropriate features and algorithms. 
 ```
 
 ### Réponse - Llama 3
 
 ``` 
+Based on the given IMU (Inertial Measurement Unit) data, I will analyze the person's action step by step:
+Step 1: Understand the IMU data
+The IMU data consists of three-axis acceleration readings (x, y, z) sampled at 100Hz. The values represent the acceleration in meters per second squared (m/s^2).
+Step 2: Visualize the data
+Plotting the data reveals some patterns and insights:
 
+    The x-axis acceleration remains relatively constant, with some minor fluctuations.
+    The y-axis acceleration has more significant fluctuations, with a range of approximately -1 to 1 m/s^2.
+    The z-axis acceleration has a more substantial range, approximately -0.5 to 0.5 m/s^2, with some periodic patterns.
+
+Step 3: Identify patterns and features
+
+    The y-axis acceleration suggests some periodic motion, potentially related to walking or movement.
+    The z-axis acceleration pattern resembles a sinusoidal wave, which might indicate a repetitive action like eating or walking.
+    The x-axis acceleration's stability could indicate a relatively steady position, like sitting or standing.
+
+Step 4: Analyze the patterns and features
+Considering the patterns and features, I can make some educated guesses about the person's action:
+
+    The periodic motion in the y-axis acceleration and the sinusoidal pattern in the z-axis acceleration suggest walking or movement.
+    The relatively stable x-axis acceleration supports this hypothesis, as it indicates a steady position, which is consistent with walking.
+    Eating and driving are less likely, as they would likely involve more significant changes in acceleration and orientation.
+    Sleep is also less likely, as the data shows some periodic motion, which is inconsistent with a sleeping person.
+
+Conclusion
+Based on the analysis, I believe the person was walking. The periodic motion and sinusoidal patterns in the y and z axes, respectively, support this conclusion. The relatively stable x-axis acceleration also supports this hypothesis.
+Please note that this analysis is based on a single IMU dataset and might not be entirely accurate. Additional data or context would help confirm the conclusion.
 ```
 
 ### Réponse - Claude
 
 ``` 
+To analyze the person's activity based on the provided IMU (Inertial Measurement Unit) data, we can follow these steps:
 
+1. **Understand the data format**:
+   - The IMU data is collected from a watch attached to the user's wrist with a sampling rate of 100 Hz.
+   - The data is provided in the IMU coordinate frame, which means the x-axis, y-axis, and z-axis correspond to the watch's orientation.
+   - The three-axis accelerations are provided as a list of values for each axis.
+
+2. **Analyze the acceleration patterns**:
+   - The x-axis acceleration values show a relatively consistent range, mostly between 0.24 g and 0.51 g, with a few larger deviations up to 0.58 g, indicating moderate dynamic movements along the x-axis.
+   - The y-axis acceleration values fluctuate between around 0.63 g and 1.49 g, suggesting significant dynamic movements in the y-direction.
+   - The z-axis acceleration values range from around -0.05 g to 0.35 g, indicating moderate dynamic movements in the z-direction.
+
+3. **Interpret the acceleration patterns**:
+   - The significant variations in acceleration along the y-axis, combined with the moderate dynamics in the x and z-axes, suggest that the person's wrist is experiencing repetitive, rhythmic movements.
+   - This pattern is characteristic of a walking or running activity, where the arm and wrist undergo cyclic motions during ambulation.
+
+4. **Identify the possible activities**:
+   - Based on the provided list of activities (driving, sleep, eating, walking), the acceleration patterns observed are most consistent with the "walking" activity.
+   - The repetitive, rhythmic movements of the wrist during walking match the characteristics of the IMU data.
+
+5. **Conclusion**:
+   Based on the analysis of the provided IMU data, the person was most likely walking during the recorded time period.
+
+In summary, the significant dynamic movements along the y-axis, combined with the moderate dynamics in the x and z-axes, indicate a repetitive, rhythmic activity pattern, which is characteristic of walking. Therefore, the person was most likely engaged in the "walking" activity during the recorded time.
 ```
 
 ## Zero-shot avec retrait de certaines données

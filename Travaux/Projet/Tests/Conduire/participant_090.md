@@ -30,19 +30,116 @@ Could you please tell what action the person was doing based on the given inform
 ### Réponse - Gemini
 
 ``` 
+##  Activity Analysis based on IMU readings
 
+Here's a step-by-step analysis to identify the person's action based on the provided IMU readings:
+
+**1. Preprocessing:**
+
+We don't need to perform extensive preprocessing for this simple analysis. However,  visualizing the data can help understand the activity better. You can plot the x, y, and z acceleration values over time using plotting libraries like matplotlib (Python) or ggplot2 (R).
+
+**2. Feature Extraction:**
+
+Since we don't have a trained model, we'll rely on basic features to differentiate between activities. Here are some relevant features to consider:
+
+* **Mean Magnitude:** This is the average of the vector magnitude (square root of the sum of squares of x, y, and z). Higher mean magnitude indicates higher overall movement.
+
+* **Standard Deviation of Magnitude:** This captures the variability of the movement intensity.
+
+**3. Analysis:**
+
+Let's analyze the possible activities based on the features:
+
+  - **Driving:**  While driving, the hand experiences vibrations due to engine noise and road irregularities. This might translate to a moderate mean magnitude with some variability (standard deviation).
+
+  - **Sleep:** During sleep, there might be minimal wrist movement, resulting in a low mean magnitude and standard deviation.
+
+  - **Eating:** The motion of bringing food to the mouth and chewing would likely cause fluctuations in acceleration, leading to a moderate mean magnitude with a higher standard deviation compared to sleep. 
+
+  - **Walking:** Walking involves repetitive arm swing causing a relatively high mean magnitude with a characteristic pattern in the y-axis acceleration (due to the up-down movement).
+
+**4. Limitations:**
+
+This analysis is based on a short snippet of data and assumes the categories are the only options. Real-world scenarios might involve more activities and require a more sophisticated approach.
+
+**5. Interpretation based on limited data:**
+
+Unfortunately, analyzing a short data snippet makes definitive classification challenging. However, here are some observations:
+
+* The data shows significant fluctuations across all axes, suggesting the person is not stationary (like during sleep).
+* The absence of a clear up-down pattern in the y-axis might argue against walking.
+
+Based on these limited observations, activities like eating or performing actions involving hand movements seem more likely than driving or sleeping.
+
+**Recommendation:**
+
+For a more accurate classification, consider:
+
+* **Collecting longer data sequences:**  This would capture a more complete picture of the activity. 
+* **Training a Machine Learning Model:** Train a model on labeled IMU data (each data point with a corresponding activity label) for robust classification.
+
+By incorporating these approaches, you can achieve more reliable activity recognition using IMU data.
 ```
 
 ### Réponse - Llama 3
 
 ``` 
+Step 1: Understand the IMU data
+The IMU data consists of three-axis acceleration readings (x, y, z) sampled at 100Hz. The values represent the acceleration in meters per second squared (m/s^2).
+Step 2: Visualize the data
+Plotting the data reveals some patterns and insights:
 
+    The x-axis acceleration has a wide range, indicating significant movement.
+    The y-axis acceleration has a smaller range, with some periodic patterns.
+    The z-axis acceleration has a mix of positive and negative values, indicating up and down movements.
+
+Step 3: Identify patterns and features
+
+    The x-axis acceleration pattern suggests rapid movements, potentially related to walking or arm movements.
+    The y-axis acceleration pattern resembles a sinusoidal wave, which might indicate a repetitive action like walking or eating.
+    The z-axis acceleration pattern indicates up and down movements, consistent with walking or arm movements.
+
+Step 4: Analyze the patterns and features
+Considering the patterns and features, I can make some educated guesses about the person's action:
+
+    The rapid movements in the x-axis acceleration and the sinusoidal pattern in the y-axis acceleration suggest walking.
+    The up and down movements in the z-axis acceleration support this hypothesis, as they are consistent with the up and down movements of the arm during walking.
+    Driving is less likely, as it would likely involve more significant changes in acceleration and orientation.
+    Eating is possible, but the patterns are more consistent with walking.
+    Sleep is unlikely, as the data shows some periodic motion, which is inconsistent with a sleeping person.
+
+Conclusion
+Based on the analysis, I believe the person was walking. The rapid movements and sinusoidal patterns in the x and y axes, respectively, support this conclusion. The up and down movements in the z-axis acceleration also support this hypothesis.
+Please note that this analysis is based on a single IMU dataset and might not be entirely accurate. Additional data or context would help confirm the conclusion.
 ```
 
 ### Réponse - Claude
 
 ``` 
+To analyze the person's activity based on the provided IMU (Inertial Measurement Unit) data, we can follow these steps:
 
+1. **Understand the data format**:
+   - The IMU data is collected from a watch attached to the user's wrist with a sampling rate of 100 Hz.
+   - The data is provided in the IMU coordinate frame, which means the x-axis, y-axis, and z-axis correspond to the watch's orientation.
+   - The three-axis accelerations are provided as a list of values for each axis.
+
+2. **Analyze the acceleration patterns**:
+   - The x-axis acceleration values show a wide range of variations, starting from around -0.33 g and reaching up to 1.28 g, indicating significant dynamic movements along the x-axis.
+   - The y-axis acceleration values also exhibit a wide range, fluctuating between around -1.18 g and 0.11 g, suggesting significant dynamic movements in the y-direction.
+   - The z-axis acceleration values range from around -0.66 g to 0.66 g, indicating significant dynamic movements in the z-direction.
+
+3. **Interpret the acceleration patterns**:
+   - The large variations in acceleration across all three axes suggest that the person's wrist is experiencing significant dynamic movements, which is characteristic of an active, dynamic activity.
+   - The observed acceleration patterns are more indicative of an activity involving repetitive, rhythmic movements, such as walking or running.
+
+4. **Identify the possible activities**:
+   - Based on the provided list of activities (driving, sleep, eating, walking), the acceleration patterns observed are most consistent with the "walking" activity.
+   - The repetitive, rhythmic movements of the wrist during walking match the characteristics of the IMU data.
+
+5. **Conclusion**:
+   Based on the analysis of the provided IMU data, the person was most likely walking during the recorded time period.
+
+In summary, the wide range of acceleration values in the x, y, and z-axes, indicating significant dynamic movements, suggest that the person was engaged in an active, dynamic activity, which aligns with the "walking" category from the given list of possible activities.
 ```
 
 ## Zero-shot avec retrait de certaines données
@@ -103,17 +200,52 @@ Could you please interpret the given IMU readings and tell what type of sensor i
 ### Réponse - Gemini
 
 ``` 
-
+I couldn't complete your request. Rephrase your prompt and try again.
 ```
 
 ### Réponse - Llama 3
 
 ``` 
+Based on the provided IMU (Inertial Measurement Unit) data, I'll perform a step-by-step analysis to interpret the readings.
+Step 1: Data Structure
+The data consists of three arrays, each representing the x, y, and z axes of the IMU sensor. Each array has 150 data points, indicating that the data was collected at a sampling rate of 150 Hz (150 data points per second).
+Step 2: Data Range and Units
+The data values range from approximately -1.23 to 1.23. Since IMU sensors typically measure acceleration, angular velocity, or orientation in units like meters per second squared (m/s^2), radians per second (rad/s), or degrees, the data is likely represented in a normalized or scaled format.
+Step 3: Data Patterns and Features
+Visual inspection of the data reveals the following patterns and features:
 
+    The x-axis data exhibits a repetitive pattern with a frequency of around 1-2 Hz, indicating a possible oscillatory or periodic motion.
+    The y-axis data shows a more complex pattern with multiple frequency components, suggesting a combination of movements or rotations.
+    The z-axis data appears to have a slower oscillation (around 0.5 Hz) and a more stable pattern, potentially related to a steady-state condition or a slower motion.
+
+Step 4: Sensor Type and Data Interpretation
+Based on the data patterns and features, it is likely that the IMU sensor is measuring a combination of linear acceleration and angular velocity. The repetitive patterns in the x and z axes might represent a walking or running motion, while the more complex pattern in the y-axis could indicate a combination of movements, such as arm swings or rotations.
+Step 5: Possible Application
+Given the characteristics of the data, it is possible that the IMU sensor is being used in a wearable device, such as a fitness tracker, smartwatch, or motion capture system, to measure human movement or activity.
+Conclusion
+The provided IMU data likely represents a combination of linear acceleration and angular velocity measurements from a wearable device or motion capture system, capturing human movement or activity patterns. The repetitive patterns and frequency components suggest a walking, running, or other periodic motion, while the more complex patterns might indicate a combination of movements or rotations.
 ```
 
 ### Réponse - Claude
 
 ``` 
+Based on the provided IMU (Inertial Measurement Unit) data, I can provide the following analysis:
 
+1. Sensor Type:
+   - The IMU data consists of three-axis measurements, which typically come from a combination of accelerometers and gyroscopes. This type of sensor is commonly used to measure the motion and orientation of an object or a person.
+
+2. Data Type:
+   - The data represents the raw sensor readings from the three-axis (x, y, and z) of the IMU. These values correspond to the acceleration and angular velocity experienced by the sensor.
+
+3. Data Interpretation:
+   - The x-axis data represents the acceleration along the x-axis, the y-axis data represents the acceleration along the y-axis, and the z-axis data represents the acceleration along the z-axis.
+   - The values in the data range from around -1.2 to 1.3, which suggests that the sensor is measuring both positive and negative acceleration along each axis.
+
+4. Potential Representation:
+   - Based on the pattern and range of the data, this IMU data could be representing the motion and activity of a human participant.
+   - The fluctuations and changes in the acceleration values across the three axes suggest that the participant is engaged in some form of physical activity, such as walking, running, or performing other body movements.
+
+To provide a more detailed analysis, I would need additional information, such as the sampling rate of the sensor, the specific context or task the participant was engaged in, and any other relevant metadata about the data collection process.
+
+Without further details, the provided IMU data appears to be capturing the dynamic motion and activity of a human participant. The three-axis measurements reflect the acceleration experienced by the sensor, which could be useful for analyzing the participant's movements and physical activities.
 ```
