@@ -45,18 +45,7 @@ Since the data window is short, isolating activities like sleep or eating might 
 
 * **Magnitude of acceleration:** This is calculated as the square root of the sum of squares of the accelerations on each axis. It provides information about the overall movement intensity.
 
-```python
-# Assuming your data is stored in three lists: x_axis, y_axis, z_axis
-magnitude = np.sqrt(np.square(x_axis) + np.square(y_axis) + np.square(z_axis))
-```
-
 * **Dominant axis:** This can be identified by finding the axis with the highest average absolute value. It can be helpful in differentiating walking (primarily vertical movement) from driving (forward-backward movement).
-
-```python
-axis_means = np.abs(np.mean(np.array([x_axis, y_axis, z_axis]), axis=0))
-dominant_axis_index = np.argmax(axis_means)
-dominant_axis_label = ['X', 'Y', 'Z'][dominant_axis_index]
-```
 
 * **Frequency Domain Features:** Applying a Fast Fourier Transform (FFT) on the magnitude of acceleration can reveal characteristics of the movement in the frequency domain. Walking has characteristic frequencies related to stride rate, which might be absent in activities like driving or sleeping.
 
