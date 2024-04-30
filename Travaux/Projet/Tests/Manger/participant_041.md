@@ -40,16 +40,6 @@ Due to the limited data snippet, we cannot perform preprocessing steps like grav
 
 * **Magnitude**: We can calculate the Euclidian norm (square root of sum of squares) for each data point in all three axes (x, y, z) to get the overall acceleration magnitude.
 
-```python
-def magnitude(x, y, z):
-  return np.sqrt(x**2 + y**2 + z**2)
-
-# Assuming the data is a NumPy array for each axis
-x_mags = magnitude(data[:, 0], np.zeros(len(data)), np.zeros(len(data)))
-y_mags = magnitude(np.zeros(len(data)), data[:, 1], np.zeros(len(data)))
-z_mags = magnitude(np.zeros(len(data)), np.zeros(len(data)), data[:, 2])
-```
-
 **3. Limited Analysis based on Magnitude:**
 
 * **Activity characteristics based on magnitude:**
