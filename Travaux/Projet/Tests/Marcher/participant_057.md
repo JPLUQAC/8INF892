@@ -39,10 +39,6 @@ Here's a step-by-step analysis of the IMU data to identify the person's action:
 * The provided data consists of three axes (x, y, z) of accelerometer readings at a sampling rate of 100Hz.
 * We can calculate the magnitude of the acceleration vector for each data point using:
 
-```
-magnitude = sqrt(x^2 + y^2 + z^2)
-```
-
 This helps understand the overall acceleration experienced by the user.
 
 **2. Feature extraction:**
