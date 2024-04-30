@@ -44,14 +44,6 @@ Even with a limited data snippet, we can do some basic analysis based on the raw
 
 * **Magnitude**: Calculate the Euclidian norm (square root of sum of squares) for each data point to get the overall acceleration magnitude.
 
-```
-def magnitude(x, y, z):
-  return np.sqrt(x**2 + y**2 + z**2)
-
-# Assuming the data is a NumPy array
-magnitudes = magnitude(data[:, 0], data[:, 1], data[:, 2])
-```
-
 * Observe the distribution of magnitudes. Activities with higher overall movement will have higher average and peak magnitudes.
 
 **3. Limited Analysis based on Magnitude:**
